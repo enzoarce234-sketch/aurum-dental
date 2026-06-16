@@ -41,7 +41,7 @@ export default function Technology() {
                   'group rounded-xl border p-6 text-left transition-all duration-500 ease-luxe',
                   active === i
                     ? 'border-champagne/50 bg-champagne/[0.06]'
-                    : 'border-white/10 hover:border-white/25'
+                    : 'border-ink/10 hover:border-ink/25'
                 )}
               >
                 <div className="flex items-center justify-between">
@@ -71,8 +71,8 @@ export default function Technology() {
           </div>
 
           {/* Product stage with interactive hotspots */}
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-graphite to-obsidian md:aspect-[4/3]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(231,211,168,0.12),transparent_60%)]" />
+          <div className="relative aspect-square overflow-hidden rounded-2xl border border-ink/10 bg-gradient-to-br from-graphite to-obsidian md:aspect-[4/3]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(15,160,145,0.12),transparent_60%)]" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -92,7 +92,7 @@ export default function Technology() {
                     className="relative h-48 w-48 md:h-60 md:w-60"
                   >
                     <div className="absolute inset-0 rotate-45 rounded-3xl border border-champagne/30 bg-gradient-to-br from-platinum/10 to-champagne/10 backdrop-blur-sm" />
-                    <div className="absolute inset-6 rounded-2xl border border-white/10 bg-gradient-to-tr from-graphite to-onyx" />
+                    <div className="absolute inset-6 rounded-2xl border border-ink/10 bg-gradient-to-tr from-graphite to-onyx" />
                     <div className="absolute inset-0 flex items-center justify-center font-serif text-6xl font-light text-champagne/80">
                       {tech.name.charAt(0)}
                     </div>
@@ -135,7 +135,7 @@ function Hotspot({
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-champagne/60" />
         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-champagne" />
       </span>
-      <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-white/15 bg-obsidian/80 px-3 py-1 text-[11px] uppercase tracking-wide2 text-ivory opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+      <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-ink/15 bg-obsidian/80 px-3 py-1 text-[11px] uppercase tracking-wide2 text-ivory opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
         {label}
       </span>
     </motion.div>

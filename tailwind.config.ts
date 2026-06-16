@@ -8,16 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Luxury palette
-        obsidian: '#0a0a0b',
-        onyx: '#121214',
-        graphite: '#1c1c1f',
-        ivory: '#f7f4ee',
-        champagne: '#c9a86a',
-        'champagne-light': '#e7d3a8',
-        'champagne-deep': '#9c7d44',
-        platinum: '#cfd2d6',
-        'platinum-dim': '#8b8e93',
+        // Modern, bright clinic palette.
+        // Token names are kept stable; values now describe a LIGHT theme so that
+        // existing utilities (bg-obsidian, text-ivory, text-champagne…) map correctly.
+        obsidian: '#ffffff', // primary surface (was the dark bg)
+        onyx: '#eef3f6', // alternating light section
+        graphite: '#e4ecf1', // cards / gradient stops
+        ink: '#16242f', // dark navy — borders & watermark text on light
+        ivory: '#16242f', // primary text (dark navy)
+        champagne: '#0fa091', // accent (clinical turquoise)
+        'champagne-light': '#3fc0b0',
+        'champagne-deep': '#0c7d72',
+        platinum: '#4f606e', // secondary text
+        'platinum-dim': '#8a98a4', // muted text
       },
       fontFamily: {
         // Wired up via next/font CSS variables in app/layout.tsx
@@ -37,10 +40,11 @@ const config: Config = {
         'in-out-expo': 'cubic-bezier(0.87, 0, 0.13, 1)',
       },
       backgroundImage: {
+        // Turquoise sheen replaces the old champagne gold gradient.
         'gold-sheen':
-          'linear-gradient(120deg, #9c7d44 0%, #e7d3a8 35%, #c9a86a 60%, #9c7d44 100%)',
+          'linear-gradient(120deg, #0c7d72 0%, #3fc0b0 35%, #0fa091 60%, #0c7d72 100%)',
         'radial-fade':
-          'radial-gradient(ellipse at center, rgba(201,168,106,0.12) 0%, rgba(10,10,11,0) 70%)',
+          'radial-gradient(ellipse at center, rgba(15,160,145,0.12) 0%, rgba(255,255,255,0) 70%)',
       },
       keyframes: {
         shimmer: {

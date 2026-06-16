@@ -55,22 +55,22 @@ export default function Hero() {
         <HeroScene />
       </div>
 
-      {/* Cinematic light beams (CSS, layered over canvas) */}
+      {/* Soft light beams (CSS, layered over canvas) */}
       <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
-        <div className="absolute left-1/2 top-[-20%] h-[80%] w-[140px] -translate-x-1/2 rotate-12 bg-gradient-to-b from-champagne/20 to-transparent blur-2xl" />
-        <div className="absolute right-[12%] top-[-10%] h-[70%] w-[90px] -rotate-12 bg-gradient-to-b from-platinum/10 to-transparent blur-2xl" />
+        <div className="absolute left-1/2 top-[-20%] h-[80%] w-[160px] -translate-x-1/2 rotate-12 bg-gradient-to-b from-champagne/15 to-transparent blur-3xl" />
+        <div className="absolute right-[12%] top-[-10%] h-[70%] w-[110px] -rotate-12 bg-gradient-to-b from-champagne-light/20 to-transparent blur-3xl" />
       </div>
 
-      {/* Vignette + base gradient for legibility */}
+      {/* Airy edge fade for legibility on the bright stage */}
       <div
-        className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(10,10,11,0.85)_100%)]"
+        className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(238,243,246,0.85)_100%)]"
         aria-hidden="true"
       />
 
       {/* Overlay content */}
       <div className="hero-content container-luxe relative z-20 flex h-full flex-col justify-center">
         <motion.p className="hero-fade eyebrow mb-6">
-          {CLINIC.location} · Excelencia Consagrada
+          {CLINIC.location} · Confianza y cercanía
         </motion.p>
 
         <h1 className="font-serif text-ivory">
@@ -88,8 +88,8 @@ export default function Hero() {
 
         <div className="hero-fade mt-10 flex max-w-xl flex-col gap-8 sm:flex-row sm:items-center">
           <p className="max-w-md text-balance text-sm font-light leading-relaxed text-platinum">
-            Una clínica privada donde la precisión médica se une a la artesanía de la
-            alta joyería: diseñamos sonrisas para quienes esperan la perfección.
+            Una clínica donde la tecnología de última generación se combina con un trato
+            humano y cercano, para que cuidar tu sonrisa sea simple y sin estrés.
           </p>
           <a href="#booking" className="btn-luxe hero-fade shrink-0">
             <span>Solicitar Consulta</span>
@@ -100,7 +100,7 @@ export default function Hero() {
       {/* Scroll cue */}
       <div className="hero-cue absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3">
         <span className="text-[10px] uppercase tracking-luxe text-platinum-dim">Desliza</span>
-        <span className="relative h-12 w-px overflow-hidden bg-white/15">
+        <span className="relative h-12 w-px overflow-hidden bg-ink/15">
           <motion.span
             className="absolute left-0 top-0 h-4 w-px bg-champagne"
             animate={{ y: [0, 32, 0] }}

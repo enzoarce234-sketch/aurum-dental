@@ -49,13 +49,13 @@ export default function Particles({ count = 600 }: { count?: number }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#e7d3a8"
+        color="#5aa9a0"
         size={0.05}
         sizeAttenuation
         transparent
-        opacity={0.7}
+        opacity={0.5}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );

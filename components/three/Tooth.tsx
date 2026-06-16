@@ -22,20 +22,20 @@ export default function Tooth({ scale = 1 }: { scale?: number }) {
   const material = useMemo(
     () =>
       new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color('#f5efe4'),
-        roughness: 0.22,
+        color: new THREE.Color('#fbfcfd'),
+        roughness: 0.18,
         metalness: 0.0,
         clearcoat: 1,
-        clearcoatRoughness: 0.08,
-        transmission: 0.05,
+        clearcoatRoughness: 0.06,
+        transmission: 0.04,
         ior: 1.5,
         thickness: 1.2,
-        sheen: 1,
-        sheenColor: new THREE.Color('#c9a86a'),
-        sheenRoughness: 0.4,
-        iridescence: 0.3,
+        sheen: 0.6,
+        sheenColor: new THREE.Color('#dff0ee'),
+        sheenRoughness: 0.5,
+        iridescence: 0.12,
         iridescenceIOR: 1.3,
-        envMapIntensity: 1.6,
+        envMapIntensity: 1.4,
       }),
     []
   );

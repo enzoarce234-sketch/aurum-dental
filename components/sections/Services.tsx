@@ -32,7 +32,7 @@ export default function Services() {
                   <button
                     onMouseEnter={() => setActive(i)}
                     onFocus={() => setActive(i)}
-                    className="group relative w-full border-t border-white/10 py-7 text-left last:border-b"
+                    className="group relative w-full border-t border-ink/10 py-7 text-left last:border-b"
                   >
                     {/* gold wash on active */}
                     <span
@@ -91,7 +91,7 @@ export default function Services() {
           {/* Sticky morphing preview (desktop) */}
           <div className="hidden lg:block">
             <div className="sticky top-28">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-graphite to-obsidian">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-gradient-to-br from-graphite to-obsidian">
                 <div className="absolute inset-0 bg-radial-fade" />
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -102,7 +102,7 @@ export default function Services() {
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute inset-0 flex items-center justify-center"
                   >
-                    <ActiveIcon className="text-[12rem] text-champagne/90 drop-shadow-[0_0_40px_rgba(201,168,106,0.35)]" />
+                    <ActiveIcon className="text-[12rem] text-champagne/90 drop-shadow-[0_0_40px_rgba(15,160,145,0.30)]" />
                   </motion.div>
                 </AnimatePresence>
 

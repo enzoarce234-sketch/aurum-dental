@@ -7,7 +7,7 @@ import Magnetic from '@/components/ui/Magnetic';
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-onyx pt-28">
+    <footer className="relative overflow-hidden border-t border-ink/10 bg-onyx pt-28">
       <div className="container-luxe">
         <div className="grid gap-14 pb-20 lg:grid-cols-[1.4fr_1fr]">
           <div>
@@ -63,14 +63,14 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="Instagram"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-platinum transition-colors hover:border-champagne hover:text-champagne"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-platinum transition-colors hover:border-champagne hover:text-champagne"
                 >
                   <FaInstagram />
                 </a>
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-platinum transition-colors hover:border-champagne hover:text-champagne"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-platinum transition-colors hover:border-champagne hover:text-champagne"
                 >
                   <FaLinkedinIn />
                 </a>
@@ -80,21 +80,21 @@ export default function Footer() {
         </div>
 
         {/* Oversized wordmark */}
-        <div className="select-none border-t border-white/10 py-10">
-          <p className="text-center font-serif text-[22vw] font-light leading-none tracking-tight text-white/[0.03]">
+        <div className="select-none border-t border-ink/10 py-10">
+          <p className="text-center font-serif text-[22vw] font-light leading-none tracking-tight text-ink/[0.03]">
             {CLINIC.name}
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-xs text-platinum-dim sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-ink/10 py-8 text-xs text-platinum-dim sm:flex-row">
           <span>© {new Date().getFullYear()} {CLINIC.name}. Todos los derechos reservados.</span>
           <span className="text-center">
-            Modelo 3D «Tooth» de{' '}
+            Cuidamos tu sonrisa · Modelo 3D «Tooth» de{' '}
             <a
               href="https://poly.pizza/m/66NBoNdhb03"
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-white/20 underline-offset-2 transition-colors hover:text-champagne"
+              className="underline decoration-ink/20 underline-offset-2 transition-colors hover:text-champagne"
             >
               sugamo
             </a>{' '}
@@ -103,7 +103,7 @@ export default function Footer() {
               href="https://creativecommons.org/licenses/by/3.0/"
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-white/20 underline-offset-2 transition-colors hover:text-champagne"
+              className="underline decoration-ink/20 underline-offset-2 transition-colors hover:text-champagne"
             >
               CC-BY 3.0
             </a>

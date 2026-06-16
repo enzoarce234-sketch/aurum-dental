@@ -70,15 +70,15 @@ export default function Booking() {
       <div className="container-luxe relative">
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
-            <SectionLabel index="07" label="El Concierge" />
+            <SectionLabel index="07" label="Pedí tu turno" />
             <AnimatedText
               as="h2"
-              text="Comienza tu transformación."
+              text="Reservá tu primera consulta."
               className="font-serif text-4xl font-light leading-[1.05] text-ivory md:text-6xl"
             />
             <p className="mt-8 max-w-sm text-base font-light text-platinum">
-              Cada proceso comienza con una consulta privada. Comparte unos datos y nuestro
-              concierge coordinará un horario que se adapte por completo a ti.
+              Dejanos algunos datos y te contactamos para coordinar un horario que te quede
+              cómodo. Sin compromiso.
             </p>
             <div className="mt-10 flex flex-col gap-2 text-sm text-platinum-dim">
               <span>{CLINIC.phone}</span>
@@ -88,7 +88,7 @@ export default function Booking() {
           </div>
 
           {/* Multi-step card */}
-          <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-graphite/60 to-onyx/60 p-8 backdrop-blur md:p-12">
+          <div className="relative rounded-2xl border border-ink/10 bg-gradient-to-br from-graphite/60 to-onyx/60 p-8 backdrop-blur md:p-12">
             {/* Hidden static form so Netlify can detect fields at build time */}
             <form name="consultation" data-netlify="true" hidden>
               <input type="text" name="service" />
@@ -111,7 +111,7 @@ export default function Booking() {
                           'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] transition-colors duration-500',
                           i <= step
                             ? 'border-champagne bg-champagne text-obsidian'
-                            : 'border-white/20 text-platinum-dim'
+                            : 'border-ink/20 text-platinum-dim'
                         )}
                       >
                         {i < step ? <FiCheck /> : i + 1}
@@ -125,7 +125,7 @@ export default function Booking() {
                         {label}
                       </span>
                       {i < STEPS.length - 1 && (
-                        <span className="ml-auto h-px flex-1 bg-white/10" />
+                        <span className="ml-auto h-px flex-1 bg-ink/10" />
                       )}
                     </div>
                   ))}
@@ -149,7 +149,7 @@ export default function Booking() {
                               'rounded-xl border p-4 text-left transition-all duration-300',
                               form.service === s.title
                                 ? 'border-champagne bg-champagne/10'
-                                : 'border-white/10 hover:border-white/30'
+                                : 'border-ink/10 hover:border-ink/30'
                             )}
                           >
                             <s.Icon className="mb-2 text-xl text-champagne" />
@@ -202,7 +202,7 @@ export default function Booking() {
                                     'flex-1 rounded-lg border px-2 py-3 text-xs transition-colors',
                                     form.time === time
                                       ? 'border-champagne bg-champagne/10 text-ivory'
-                                      : 'border-white/10 text-platinum-dim hover:border-white/30'
+                                      : 'border-ink/10 text-platinum-dim hover:border-ink/30'
                                   )}
                                 >
                                   {time}
@@ -216,7 +216,7 @@ export default function Booking() {
 
                     {step === 2 && (
                       <div className="flex flex-col gap-5">
-                        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+                        <div className="rounded-xl border border-ink/10 bg-ink/[0.02] p-6">
                           <Summary label="Servicio" value={form.service || '—'} />
                           <Summary label="Nombre" value={form.name || '—'} />
                           <Summary label="Email" value={form.email || '—'} />
@@ -235,7 +235,7 @@ export default function Booking() {
                             onChange={(e) => set('notes', e.target.value)}
                             rows={3}
                             placeholder="Cuéntanos tu objetivo..."
-                            className="w-full resize-none rounded-lg border border-white/10 bg-transparent p-4 text-sm text-ivory outline-none transition-colors placeholder:text-platinum-dim/60 focus:border-champagne"
+                            className="w-full resize-none rounded-lg border border-ink/10 bg-transparent p-4 text-sm text-ivory outline-none transition-colors placeholder:text-platinum-dim/60 focus:border-champagne"
                           />
                         </div>
                       </div>
@@ -282,11 +282,11 @@ export default function Booking() {
                   <FiCheck />
                 </span>
                 <h3 className="font-serif text-3xl font-light text-ivory">
-                  Hemos recibido tu solicitud
+                  ¡Recibimos tu solicitud!
                 </h3>
                 <p className="mt-4 max-w-sm text-sm font-light text-platinum">
-                  Gracias, {form.name || 'y bienvenido/a'}. Nuestro concierge te contactará
-                  en un día hábil para confirmar tu consulta privada.
+                  Gracias, {form.name || 'y bienvenido/a'}. Te contactamos dentro de las
+                  próximas 24 horas para coordinar tu turno.
                 </p>
               </motion.div>
             )}
@@ -320,7 +320,7 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-white/10 bg-transparent p-4 text-sm text-ivory outline-none transition-colors placeholder:text-platinum-dim/60 focus:border-champagne"
+        className="w-full rounded-lg border border-ink/10 bg-transparent p-4 text-sm text-ivory outline-none transition-colors placeholder:text-platinum-dim/60 focus:border-champagne"
       />
     </div>
   );
@@ -328,7 +328,7 @@ function Field({
 
 function Summary({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between border-b border-white/5 py-2.5 last:border-0">
+    <div className="flex items-center justify-between border-b border-ink/5 py-2.5 last:border-0">
       <span className="text-xs uppercase tracking-wide2 text-platinum-dim">{label}</span>
       <span className="text-sm text-ivory">{value}</span>
     </div>

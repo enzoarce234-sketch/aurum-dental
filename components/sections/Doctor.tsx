@@ -52,12 +52,12 @@ export default function Doctor() {
         <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           {/* Cinematic portrait (CSS-composed, no external asset) */}
           <div className="portrait relative">
-            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10">
               <div className="portrait-inner absolute inset-[-12%] bg-gradient-to-b from-graphite via-onyx to-obsidian" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_25%,rgba(231,211,168,0.18),transparent_55%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_25%,rgba(15,160,145,0.16),transparent_55%)]" />
               {/* Monogram */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-serif text-[12rem] font-light leading-none text-white/[0.04]">
+                <span className="font-serif text-[12rem] font-light leading-none text-ink/[0.04]">
                   AV
                 </span>
               </div>
@@ -79,15 +79,16 @@ export default function Doctor() {
             />
             <Reveal delay={0.15} className="mt-8 max-w-xl">
               <p className="text-base font-light leading-relaxed text-platinum">
-                Formado en tres continentes y elegido por una clientela que valora la
-                discreción por encima de todo, el Dr. Valenti ha dedicado su carrera a
-                refinar una sola idea: que el mejor trabajo es aquel que nadie puede detectar.
+                Formado en el país y en el exterior, y elegido por pacientes que buscan
+                resultados naturales y un trato honesto, el Dr. Valenti ha dedicado su
+                carrera a una sola idea: que el mejor trabajo es el que se ve natural y
+                dura en el tiempo.
               </p>
             </Reveal>
 
             <div className="timeline relative mt-14 pl-8">
               {/* Track */}
-              <span className="absolute left-0 top-1 h-[calc(100%-1rem)] w-px bg-white/10" />
+              <span className="absolute left-0 top-1 h-[calc(100%-1rem)] w-px bg-ink/10" />
               <span className="timeline-progress absolute left-0 top-1 h-[calc(100%-1rem)] w-px origin-top bg-gradient-to-b from-champagne to-champagne-deep" />
 
               <div className="flex flex-col gap-12">

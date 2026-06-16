@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --color-obsidian: #0a0a0b;
-  --color-champagne: #c9a86a;
+  --color-obsidian: #ffffff;
+  --color-champagne: #0fa091;
 }
 
 * {
@@ -22,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--color-obsidian);
-  color: #f7f4ee;
+  color: #16242f;
   overflow-x: hidden;
 }
 
@@ -50,19 +50,19 @@ html.lenis body {
 
 /* Custom selection */
 ::selection {
-  background: rgba(201, 168, 106, 0.85);
-  color: #0a0a0b;
+  background: rgba(15, 160, 145, 0.85);
+  color: #ffffff;
 }
 
-/* Slim luxury scrollbar */
+/* Slim scrollbar */
 ::-webkit-scrollbar {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0b;
+  background: #eef3f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#9c7d44, #c9a86a);
+  background: linear-gradient(#0c7d72, #0fa091);
   border-radius: 99px;
 }
 
@@ -119,8 +119,8 @@ html.lenis body {
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: overlay;
+    opacity: 0.025;
+    mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

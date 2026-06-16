@@ -38,7 +38,7 @@ export default function Testimonials() {
       id="testimonials"
       className="relative overflow-hidden bg-onyx py-32 md:py-44"
     >
-      <div className="pointer-events-none absolute -right-40 top-20 font-serif text-[40rem] leading-none text-white/[0.015]">
+      <div className="pointer-events-none absolute -right-40 top-20 font-serif text-[40rem] leading-none text-ink/[0.015]">
         ”
       </div>
 
@@ -81,7 +81,7 @@ export default function Testimonials() {
               className="group flex-1 text-left"
               aria-label={`Ver testimonio de ${item.author}`}
             >
-              <span className="relative block h-px w-full overflow-hidden bg-white/15">
+              <span className="relative block h-px w-full overflow-hidden bg-ink/15">
                 <span
                   className={cn(
                     'absolute left-0 top-0 h-full bg-champagne transition-[width]',

@@ -10,11 +10,11 @@ import {
 
 export const CLINIC = {
   name: 'AURUM',
-  tagline: 'El Arte de la Sonrisa Perfecta',
-  location: 'Recoleta, Buenos Aires',
+  tagline: 'Cuidamos tu sonrisa',
+  location: 'Caballito, Buenos Aires',
   phone: '+54 11 5555 0188',
-  email: 'concierge@aurum.clinic',
-  hours: 'Solo con cita privada',
+  email: 'turnos@aurum.clinic',
+  hours: 'Con turno previo',
 } as const;
 
 export const NAV_LINKS = [
@@ -98,10 +98,10 @@ export interface Achievement {
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { value: '24', label: 'Años de trayectoria' },
-  { value: '11K+', label: 'Sonrisas rediseñadas' },
-  { value: '38', label: 'Premios internacionales' },
-  { value: '100%', label: 'Discreción garantizada' },
+  { value: '20', label: 'Años de experiencia' },
+  { value: '15K+', label: 'Pacientes atendidos' },
+  { value: '6', label: 'Especialidades' },
+  { value: '9', label: 'Profesionales en el equipo' },
 ];
 
 export interface TimelineItem {
@@ -124,12 +124,12 @@ export const TIMELINE: TimelineItem[] = [
   {
     year: '2014',
     title: 'Fundación de AURUM',
-    detail: 'Abre la clínica privada insignia dedicada a la odontología estética de ultra lujo.',
+    detail: 'Abre la clínica dedicada a la odontología estética de excelencia con un trato cercano.',
   },
   {
     year: '2023',
-    title: 'Reconocimiento Global',
-    detail: 'Nombrado entre las principales autoridades mundiales en odontología cosmética por el Aesthetic Council.',
+    title: 'Centro de referencia',
+    detail: 'Reconocida en la ciudad por su tecnología, sus resultados naturales y la calidez de su atención.',
   },
 ];
 
@@ -224,22 +224,22 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'Llevo treinta años siendo fotografiada. Por primera vez no retoco mi propia sonrisa. AURUM entendió la diferencia entre tener dientes y tener presencia.',
-    author: 'A. Lindqvist',
-    role: 'Directora de Cine',
+      'Siempre me dio miedo el dentista y acá me sentí cómoda desde el primer día. Me explicaron cada paso y el resultado se ve totalmente natural.',
+    author: 'Marina G.',
+    role: 'Paciente · Caballito',
   },
   {
     id: 't2',
     quote:
-      'Discreción, precisión y una obsesión por el detalle que normalmente solo encuentro en mi propio trabajo. Esto no es odontología. Es artesanía.',
-    author: 'M. Castellan',
-    role: 'Arquitecto',
+      'Buscaba un lugar de confianza para toda la familia. La atención es cálida, puntual y muy profesional. Ya somos pacientes hace años.',
+    author: 'Diego R.',
+    role: 'Paciente · Villa Crespo',
   },
   {
     id: 't3',
     quote:
-      'Reconstruyeron mi confianza en una sola tarde. La tecnología parecía del futuro; el trato, el de un club privado.',
-    author: 'R. Okonkwo',
-    role: 'Fundador y CEO',
+      'Me hice las carillas y quedaron impecables. Lo que más valoré fue lo claros que fueron con los tiempos y cada paso del tratamiento.',
+    author: 'Lucía P.',
+    role: 'Paciente · Almagro',
   },
 ];

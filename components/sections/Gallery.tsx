@@ -31,7 +31,7 @@ export default function Gallery() {
                   'h-10 w-10 rounded-full border text-xs transition-all duration-500',
                   active === i
                     ? 'border-champagne bg-champagne text-obsidian'
-                    : 'border-white/20 text-platinum hover:border-white/50'
+                    : 'border-ink/20 text-platinum hover:border-ink/50'
                 )}
               >
                 {i + 1}
@@ -42,7 +42,7 @@ export default function Gallery() {
 
         <CompareSlider key={c.id} data={c} />
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-6">
           <div>
             <p className="font-serif text-2xl font-light text-ivory">{c.title}</p>
             <p className="text-sm text-platinum-dim">{c.treatment}</p>
@@ -72,7 +72,7 @@ function CompareSlider({ data }: { data: CaseStudy }) {
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl border border-white/10 md:aspect-[21/9]"
+      className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl border border-ink/10 md:aspect-[21/9]"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -123,7 +123,8 @@ function Label({
       className={cn(
         'absolute top-6 z-[5] text-[11px] uppercase tracking-luxe',
         align === 'left' ? 'left-6' : 'right-6',
-        tone === 'dark' ? 'text-obsidian/70' : 'text-ivory/80'
+        // Rendered over the case imagery: dark side needs light text and vice versa.
+        tone === 'dark' ? 'text-black/55' : 'text-white/85'
       )}
     >
       {text}

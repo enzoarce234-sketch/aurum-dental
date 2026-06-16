@@ -44,22 +44,22 @@ export default function HeroScene() {
       />
       <AdaptiveDpr pixelated />
 
-      <color attach="background" args={['#0a0a0b']} />
-      <fog attach="fog" args={['#0a0a0b', 9, 18]} />
+      <color attach="background" args={['#eef3f6']} />
+      <fog attach="fog" args={['#eef3f6', 10, 20]} />
 
-      {/* Key + rim lighting */}
-      <ambientLight intensity={0.25} />
+      {/* Bright, clean studio lighting */}
+      <ambientLight intensity={0.9} />
       <spotLight
         position={[6, 8, 6]}
         angle={0.4}
         penumbra={1}
-        intensity={2.4}
-        color="#fff4dc"
+        intensity={2.6}
+        color="#ffffff"
         castShadow
         shadow-mapSize={[1024, 1024]}
       />
-      <spotLight position={[-7, 2, -4]} angle={0.5} penumbra={1} intensity={1.6} color="#c9a86a" />
-      <pointLight position={[0, -4, 4]} intensity={0.6} color="#cfd2d6" />
+      <spotLight position={[-7, 2, -4]} angle={0.5} penumbra={1} intensity={1.4} color="#bfe6e0" />
+      <pointLight position={[0, -4, 4]} intensity={0.5} color="#ffffff" />
 
       <Suspense fallback={null}>
         <Tooth scale={1.25} />
@@ -86,7 +86,7 @@ export default function HeroScene() {
           <Lightformer
             form="rect"
             intensity={2}
-            color="#e7d3a8"
+            color="#ffffff"
             position={[-5, 1, 2]}
             scale={[4, 6, 1]}
             rotation={[0, Math.PI / 4, 0]}
@@ -94,15 +94,15 @@ export default function HeroScene() {
           <Lightformer
             form="rect"
             intensity={2.2}
-            color="#cfd2d6"
+            color="#dff0ee"
             position={[5, -1, 2]}
             scale={[4, 6, 1]}
             rotation={[0, -Math.PI / 4, 0]}
           />
           <Lightformer
             form="ring"
-            intensity={1.4}
-            color="#c9a86a"
+            intensity={1.2}
+            color="#9fd8d0"
             position={[0, 0, 6]}
             scale={[3, 3, 1]}
           />
@@ -112,12 +112,12 @@ export default function HeroScene() {
         {effects && (
           <EffectComposer multisampling={0}>
             <Bloom
-              intensity={0.55}
-              luminanceThreshold={0.65}
-              luminanceSmoothing={0.3}
+              intensity={0.18}
+              luminanceThreshold={0.92}
+              luminanceSmoothing={0.4}
               mipmapBlur
             />
-            <Vignette eskil={false} offset={0.25} darkness={0.85} />
+            <Vignette eskil={false} offset={0.4} darkness={0.35} />
             <SMAA />
           </EffectComposer>
         )}
