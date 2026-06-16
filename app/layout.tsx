@@ -59,7 +59,6 @@ export default function RootLayout({
     <html lang="es" className={`${serif.variable} ${sans.variable}`}>
       <body className="bg-obsidian text-ivory antialiased">
         <SmoothScroll>{children}</SmoothScroll>
-        <div className="grain" aria-hidden="true" />
       </body>
     </html>
   );

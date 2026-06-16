@@ -25,6 +25,7 @@ interface HeroSceneProps {
  * so the experience is 100% self-contained — no external HDRI fetch required.
  */
 export default function HeroScene({ active = true, isMobile = false }: HeroSceneProps) {
+  // Cap DPR at 1.5 — 2× on hi-dpi screens is the single biggest GPU cost here.
   const [dpr, setDpr] = useState(isMobile ? 1 : 1.5);
   // Post-processing is heavy: off on mobile, and dropped if a desktop GPU struggles.
   const [effects, setEffects] = useState(!isMobile);
@@ -40,7 +41,6 @@ export default function HeroScene({ active = true, isMobile = false }: HeroScene
     >
       {!isMobile && (
         <PerformanceMonitor
-          onIncline={() => setDpr(2)}
           onDecline={() => {
             setDpr(1);
             setEffects(false);
@@ -67,8 +67,8 @@ export default function HeroScene({ active = true, isMobile = false }: HeroScene
       <pointLight position={[0, -4, 4]} intensity={0.5} color="#ffffff" />
 
       <Suspense fallback={null}>
-        <Tooth scale={isMobile ? 1.05 : 1.25} />
-        <Particles count={isMobile ? 220 : 650} />
+        <Tooth scale={isMobile ? 0.82 : 1.0} />
+        <Particles count={isMobile ? 160 : 380} />
 
         {!isMobile && (
           <ContactShadows

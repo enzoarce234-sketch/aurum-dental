@@ -7,10 +7,9 @@ import * as THREE from 'three';
 import { lerp } from '@/lib/utils';
 
 /**
- * A single, clean, aesthetic tooth — generated procedurally so it is always
- * exactly one tooth (no extra props), with full control over its shape.
- * A unit sphere is sculpted: a wide rounded crown on top that tapers into a
- * single elongated root below, then finished in a glossy white enamel material.
+ * A single, clean molar — generated procedurally (always exactly one tooth).
+ * A squashed sphere is sculpted into a cusped occlusal crown, paired with two
+ * short tapered roots, then finished in a glossy white enamel material.
  */
 export default function Tooth({ scale = 1 }: { scale?: number }) {
   const group = useRef<THREE.Group>(null);
@@ -20,10 +19,10 @@ export default function Tooth({ scale = 1 }: { scale?: number }) {
     () =>
       new THREE.MeshPhysicalMaterial({
         color: new THREE.Color('#fcfdfd'),
-        roughness: 0.16,
+        roughness: 0.18,
         metalness: 0,
         clearcoat: 1,
-        clearcoatRoughness: 0.05,
+        clearcoatRoughness: 0.06,
         transmission: 0.03,
         ior: 1.5,
         thickness: 1.0,
@@ -36,42 +35,41 @@ export default function Tooth({ scale = 1 }: { scale?: number }) {
     []
   );
 
-  const geometry = useMemo(() => {
-    const geo = new THREE.SphereGeometry(1, 160, 160);
+  // Cusped molar crown.
+  const crownGeo = useMemo(() => {
+    const geo = new THREE.SphereGeometry(1, 96, 96);
     const pos = geo.attributes.position as THREE.BufferAttribute;
     const v = new THREE.Vector3();
-
-    const crownWidth = 1.04; // left-right
-    const crownDepth = 0.74; // front-back (an incisor is flatter)
-
     for (let i = 0; i < pos.count; i++) {
       v.fromBufferAttribute(pos, i);
-      const y = v.y;
-      let taper = 1;
-      let ny = y;
-
-      if (y < 0) {
-        // Lower half tapers and elongates into a single root.
-        taper = THREE.MathUtils.clamp(1 + y * 0.7, 0.16, 1);
-        ny = y * 1.85;
+      const nx = v.x;
+      const ny = v.y;
+      const nz = v.z;
+      let X = nx * 1.12;
+      let Z = nz * 1.12;
+      let Y = ny * 0.62; // squash into a low crown
+      if (ny > 0) {
+        // Four corner cusps + a central rise, with fissures between them.
+        const cusp = Math.cos(nx * Math.PI) * Math.cos(nz * Math.PI);
+        Y += Math.max(0, ny) * (0.2 * cusp + 0.05);
       } else {
-        // Crown: gently flatten the biting edge and round the shoulders.
-        ny = y * 0.92;
-        taper = 1 - y * y * 0.05;
+        // Slightly tuck the base in toward the neck.
+        const k = 1 + ny * 0.18;
+        X *= k;
+        Z *= k;
       }
-
-      // Soft incisal lobes — three subtle vertical swells on the crown front.
-      const lobe =
-        y > 0.1 ? Math.cos(v.x * 4.2) * 0.015 * Math.max(0, v.z) : 0;
-
-      v.x *= taper * crownWidth + lobe;
-      v.z *= taper * crownDepth + lobe;
-      v.y = ny;
-      pos.setXYZ(i, v.x, v.y, v.z);
+      pos.setXYZ(i, X, Y, Z);
     }
-
     geo.computeVertexNormals();
-    geo.center();
+    geo.translate(0, 0.42, 0);
+    return geo;
+  }, []);
+
+  // A single tapered root (reused twice).
+  const rootGeo = useMemo(() => {
+    const geo = new THREE.ConeGeometry(0.34, 1.0, 40);
+    geo.translate(0, -0.5, 0); // base at origin, tip downward after we flip
+    geo.rotateX(Math.PI); // wide end up (toward crown), point down
     return geo;
   }, []);
 
@@ -88,10 +86,11 @@ export default function Tooth({ scale = 1 }: { scale?: number }) {
   });
 
   return (
-    <Float speed={1.3} rotationIntensity={0.25} floatIntensity={0.6} floatingRange={[-0.1, 0.1]}>
-      {/* Slight forward tilt so both crown and root read at a glance. */}
-      <group ref={group} scale={scale * 1.7} rotation={[0.15, 0, 0]} dispose={null}>
-        <mesh geometry={geometry} material={material} castShadow />
+    <Float speed={1.3} rotationIntensity={0.25} floatIntensity={0.6} floatingRange={[-0.08, 0.08]}>
+      <group ref={group} scale={scale} dispose={null}>
+        <mesh geometry={crownGeo} material={material} castShadow />
+        <mesh geometry={rootGeo} material={material} position={[-0.32, -0.1, 0]} rotation={[0, 0, 0.16]} castShadow />
+        <mesh geometry={rootGeo} material={material} position={[0.32, -0.1, 0]} rotation={[0, 0, -0.16]} castShadow />
       </group>
     </Float>
   );
