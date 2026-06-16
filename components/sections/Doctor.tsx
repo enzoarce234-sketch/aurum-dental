@@ -47,7 +47,7 @@ export default function Doctor() {
   return (
     <section ref={root} id="doctor" className="relative bg-obsidian py-32 md:py-44">
       <div className="container-luxe">
-        <SectionLabel index="03" label="The Hand Behind the Work" />
+        <SectionLabel index="03" label="La Mano Tras la Obra" />
 
         <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           {/* Cinematic portrait (CSS-composed, no external asset) */}
@@ -64,7 +64,7 @@ export default function Doctor() {
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-obsidian to-transparent p-8">
                 <p className="font-serif text-3xl font-light text-ivory">Dr. Adrián Valenti</p>
                 <p className="mt-1 text-xs uppercase tracking-wide2 text-champagne">
-                  Founder · Cosmetic & Restorative Lead
+                  Fundador · Director de Estética y Restauradora
                 </p>
               </div>
             </div>
@@ -74,14 +74,14 @@ export default function Doctor() {
           <div>
             <AnimatedText
               as="h2"
-              text="Two decades in pursuit of the imperceptible."
+              text="Dos décadas en busca de lo imperceptible."
               className="font-serif text-3xl font-light leading-[1.1] text-ivory md:text-5xl"
             />
             <Reveal delay={0.15} className="mt-8 max-w-xl">
               <p className="text-base font-light leading-relaxed text-platinum">
-                Trained across three continents and trusted by a clientele that values
-                discretion above all, Dr. Valenti has spent his career refining a single
-                idea: that the finest work is the kind no one can detect.
+                Formado en tres continentes y elegido por una clientela que valora la
+                discreción por encima de todo, el Dr. Valenti ha dedicado su carrera a
+                refinar una sola idea: que el mejor trabajo es aquel que nadie puede detectar.
               </p>
             </Reveal>
 

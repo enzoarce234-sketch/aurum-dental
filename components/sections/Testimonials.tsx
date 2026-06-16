@@ -43,7 +43,7 @@ export default function Testimonials() {
       </div>
 
       <div className="container-luxe relative">
-        <SectionLabel index="06" label="In Their Words" />
+        <SectionLabel index="06" label="En Sus Palabras" />
 
         <div className="min-h-[40vh]">
           <AnimatePresence mode="wait">
@@ -79,7 +79,7 @@ export default function Testimonials() {
                 setProgress(0);
               }}
               className="group flex-1 text-left"
-              aria-label={`Show testimonial from ${item.author}`}
+              aria-label={`Ver testimonio de ${item.author}`}
             >
               <span className="relative block h-px w-full overflow-hidden bg-white/15">
                 <span

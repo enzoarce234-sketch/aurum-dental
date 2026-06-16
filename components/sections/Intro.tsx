@@ -41,21 +41,22 @@ export default function Intro() {
       className="relative bg-obsidian py-32 md:py-44"
     >
       <div className="container-luxe">
-        <SectionLabel index="01" label="Philosophy" />
+        <SectionLabel index="01" label="Filosofía" />
 
         <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:gap-24">
           <div>
             <AnimatedText
               as="h2"
-              text="We do not whiten teeth. We compose presence."
+              text="No blanqueamos dientes. Componemos presencia."
               className="font-serif text-4xl font-light leading-[1.05] text-ivory md:text-6xl lg:text-7xl"
             />
             <Reveal delay={0.2} className="mt-10 max-w-xl">
               <p className="text-lg font-light leading-relaxed text-platinum">
-                Every smile we create begins as a study — of architecture, of light, of
-                the person who wears it. We treat dentistry as a fine craft, marrying
-                surgical precision with an obsessive eye for aesthetics. The result is
-                never noticed as dental work. It is simply seen as <em className="text-champagne not-italic">you</em>, at your best.
+                Cada sonrisa que creamos comienza como un estudio: de arquitectura, de luz,
+                de la persona que la lleva. Tratamos la odontología como un oficio de
+                orfebrería, uniendo la precisión quirúrgica con una mirada obsesiva por la
+                estética. El resultado nunca se percibe como trabajo dental. Simplemente se
+                ve como <em className="text-champagne not-italic">tú</em>, en tu mejor versión.
               </p>
             </Reveal>
           </div>

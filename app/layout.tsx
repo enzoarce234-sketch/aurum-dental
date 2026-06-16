@@ -19,29 +19,29 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aurum.clinic'),
-  title: 'AURUM — The Art of the Perfect Smile',
+  title: 'AURUM — El Arte de la Sonrisa Perfecta',
   description:
-    'AURUM is a private luxury dental clinic crafting world-class smiles for executives, performers, and those who expect perfection. Digital smile design, porcelain veneers, guided implants.',
+    'AURUM es una clínica dental privada de lujo que crea sonrisas de clase mundial para ejecutivos, artistas y quienes esperan la perfección. Diseño digital de sonrisa, carillas de porcelana e implantes guiados.',
   keywords: [
-    'luxury dental clinic',
-    'cosmetic dentistry',
-    'smile design',
-    'porcelain veneers',
-    'dental implants',
-    'private dentist',
+    'clínica dental de lujo',
+    'odontología estética',
+    'diseño de sonrisa',
+    'carillas de porcelana',
+    'implantes dentales',
+    'dentista privado',
   ],
   openGraph: {
-    title: 'AURUM — The Art of the Perfect Smile',
+    title: 'AURUM — El Arte de la Sonrisa Perfecta',
     description:
-      'A flagship luxury dental experience. Digital smile design, porcelain veneers, and guided implantology for those who expect perfection.',
+      'Una experiencia dental de lujo insignia. Diseño digital de sonrisa, carillas de porcelana e implantología guiada para quienes esperan la perfección.',
     type: 'website',
-    locale: 'en_US',
+    locale: 'es_ES',
     siteName: 'AURUM',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AURUM — The Art of the Perfect Smile',
-    description: 'A flagship luxury dental experience.',
+    title: 'AURUM — El Arte de la Sonrisa Perfecta',
+    description: 'Una experiencia dental de lujo insignia.',
   },
   robots: { index: true, follow: true },
 };
@@ -56,7 +56,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="es" className={`${serif.variable} ${sans.variable}`}>
       <body className="bg-obsidian text-ivory antialiased">
         <SmoothScroll>{children}</SmoothScroll>
         <div className="grain" aria-hidden="true" />

@@ -11,15 +11,15 @@ export default function Footer() {
       <div className="container-luxe">
         <div className="grid gap-14 pb-20 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="eyebrow mb-6">Begin a conversation</p>
+            <p className="eyebrow mb-6">Comienza una conversación</p>
             <AnimatedText
               as="h2"
-              text="Your finest smile awaits."
+              text="Tu mejor sonrisa te espera."
               className="font-serif text-5xl font-light text-ivory md:text-7xl"
             />
             <Magnetic className="mt-10 inline-block">
               <a href="#booking" className="btn-luxe">
-                <span>Book a Private Consultation</span>
+                <span>Reservar Consulta Privada</span>
               </a>
             </Magnetic>
           </div>
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-10">
             <div>
               <p className="mb-5 text-xs uppercase tracking-wide2 text-platinum-dim">
-                Explore
+                Explorar
               </p>
               <ul className="flex flex-col gap-3">
                 {NAV_LINKS.map((l) => (
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
             <div>
               <p className="mb-5 text-xs uppercase tracking-wide2 text-platinum-dim">
-                Contact
+                Contacto
               </p>
               <ul className="flex flex-col gap-3 text-sm text-platinum">
                 <li>{CLINIC.location}</li>
@@ -87,9 +87,9 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-xs text-platinum-dim sm:flex-row">
-          <span>© {new Date().getFullYear()} {CLINIC.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {CLINIC.name}. Todos los derechos reservados.</span>
           <span className="text-center">
-            3D model “Tooth” by{' '}
+            Modelo 3D «Tooth» de{' '}
             <a
               href="https://poly.pizza/m/66NBoNdhb03"
               target="_blank"

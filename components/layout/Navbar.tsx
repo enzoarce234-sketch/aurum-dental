@@ -58,11 +58,11 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Magnetic className="hidden md:block">
               <a href="#booking" className="btn-luxe !px-6 !py-3">
-                <span>Book Now</span>
+                <span>Reservar</span>
               </a>
             </Magnetic>
             <button
-              aria-label="Open menu"
+              aria-label="Abrir menú"
               onClick={() => setOpen(true)}
               className="text-2xl text-ivory lg:hidden"
             >
@@ -87,7 +87,7 @@ export default function Navbar() {
                 {CLINIC.name}
               </span>
               <button
-                aria-label="Close menu"
+                aria-label="Cerrar menú"
                 onClick={() => setOpen(false)}
                 className="text-3xl text-ivory"
               >

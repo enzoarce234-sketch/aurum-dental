@@ -24,12 +24,12 @@ const EMPTY: FormState = {
   email: '',
   phone: '',
   date: '',
-  time: 'Morning',
+  time: 'Mañana',
   notes: '',
 };
 
-const STEPS = ['Service', 'Details', 'Confirm'];
-const TIMES = ['Morning', 'Afternoon', 'Evening'];
+const STEPS = ['Servicio', 'Datos', 'Confirmar'];
+const TIMES = ['Mañana', 'Tarde', 'Noche'];
 
 function encode(data: Record<string, string>) {
   return Object.keys(data)
@@ -70,15 +70,15 @@ export default function Booking() {
       <div className="container-luxe relative">
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
-            <SectionLabel index="07" label="The Concierge" />
+            <SectionLabel index="07" label="El Concierge" />
             <AnimatedText
               as="h2"
-              text="Begin your transformation."
+              text="Comienza tu transformación."
               className="font-serif text-4xl font-light leading-[1.05] text-ivory md:text-6xl"
             />
             <p className="mt-8 max-w-sm text-base font-light text-platinum">
-              Every journey opens with a private consultation. Share a few details and our
-              concierge will arrange a time that suits you entirely.
+              Cada proceso comienza con una consulta privada. Comparte unos datos y nuestro
+              concierge coordinará un horario que se adapte por completo a ti.
             </p>
             <div className="mt-10 flex flex-col gap-2 text-sm text-platinum-dim">
               <span>{CLINIC.phone}</span>
@@ -162,10 +162,10 @@ export default function Booking() {
                     {step === 1 && (
                       <div className="flex flex-col gap-5">
                         <Field
-                          label="Full name"
+                          label="Nombre completo"
                           value={form.name}
                           onChange={(v) => set('name', v)}
-                          placeholder="Your name"
+                          placeholder="Tu nombre"
                         />
                         <div className="grid gap-5 sm:grid-cols-2">
                           <Field
@@ -173,25 +173,25 @@ export default function Booking() {
                             type="email"
                             value={form.email}
                             onChange={(v) => set('email', v)}
-                            placeholder="you@email.com"
+                            placeholder="tu@email.com"
                           />
                           <Field
-                            label="Phone"
+                            label="Teléfono"
                             value={form.phone}
                             onChange={(v) => set('phone', v)}
-                            placeholder="+1 ..."
+                            placeholder="+54 ..."
                           />
                         </div>
                         <div className="grid gap-5 sm:grid-cols-2">
                           <Field
-                            label="Preferred date"
+                            label="Fecha preferida"
                             type="date"
                             value={form.date}
                             onChange={(v) => set('date', v)}
                           />
                           <div>
                             <label className="mb-2 block text-xs uppercase tracking-wide2 text-platinum-dim">
-                              Preferred time
+                              Horario preferido
                             </label>
                             <div className="flex gap-2">
                               {TIMES.map((time) => (
@@ -217,24 +217,24 @@ export default function Booking() {
                     {step === 2 && (
                       <div className="flex flex-col gap-5">
                         <div className="rounded-xl border border-white/10 bg-white/[0.02] p-6">
-                          <Summary label="Service" value={form.service || '—'} />
-                          <Summary label="Name" value={form.name || '—'} />
+                          <Summary label="Servicio" value={form.service || '—'} />
+                          <Summary label="Nombre" value={form.name || '—'} />
                           <Summary label="Email" value={form.email || '—'} />
-                          <Summary label="Phone" value={form.phone || '—'} />
+                          <Summary label="Teléfono" value={form.phone || '—'} />
                           <Summary
-                            label="When"
+                            label="Cuándo"
                             value={`${form.date || 'Flexible'} · ${form.time}`}
                           />
                         </div>
                         <div>
                           <label className="mb-2 block text-xs uppercase tracking-wide2 text-platinum-dim">
-                            Anything we should know? (optional)
+                            ¿Algo que debamos saber? (opcional)
                           </label>
                           <textarea
                             value={form.notes}
                             onChange={(e) => set('notes', e.target.value)}
                             rows={3}
-                            placeholder="Tell us about your goals..."
+                            placeholder="Cuéntanos tu objetivo..."
                             className="w-full resize-none rounded-lg border border-white/10 bg-transparent p-4 text-sm text-ivory outline-none transition-colors placeholder:text-platinum-dim/60 focus:border-champagne"
                           />
                         </div>
@@ -252,7 +252,7 @@ export default function Booking() {
                       step === 0 && 'pointer-events-none opacity-0'
                     )}
                   >
-                    <FiArrowLeft /> Back
+                    <FiArrowLeft /> Atrás
                   </button>
 
                   {step < STEPS.length - 1 ? (
@@ -261,12 +261,12 @@ export default function Booking() {
                       onClick={() => canNext && setStep((s) => s + 1)}
                       className="btn-luxe disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      <span>Continue</span>
+                      <span>Continuar</span>
                       <FiArrowRight />
                     </button>
                   ) : (
                     <button onClick={submit} className="btn-luxe">
-                      <span>Request Consultation</span>
+                      <span>Solicitar Consulta</span>
                       <FiArrowRight />
                     </button>
                   )}
@@ -282,11 +282,11 @@ export default function Booking() {
                   <FiCheck />
                 </span>
                 <h3 className="font-serif text-3xl font-light text-ivory">
-                  Your request is received
+                  Hemos recibido tu solicitud
                 </h3>
                 <p className="mt-4 max-w-sm text-sm font-light text-platinum">
-                  Thank you, {form.name || 'and welcome'}. Our concierge will contact you
-                  within one business day to confirm your private consultation.
+                  Gracias, {form.name || 'y bienvenido/a'}. Nuestro concierge te contactará
+                  en un día hábil para confirmar tu consulta privada.
                 </p>
               </motion.div>
             )}

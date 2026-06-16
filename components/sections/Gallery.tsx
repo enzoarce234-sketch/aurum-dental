@@ -14,11 +14,11 @@ export default function Gallery() {
   return (
     <section id="gallery" className="relative bg-obsidian py-32 md:py-44">
       <div className="container-luxe">
-        <SectionLabel index="05" label="Before & After" />
+        <SectionLabel index="05" label="Antes y Después" />
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <AnimatedText
             as="h2"
-            text="Transformations, drag to reveal."
+            text="Transformaciones, arrastra para revelar."
             className="font-serif text-4xl font-light text-ivory md:text-6xl"
           />
           <div className="flex gap-2">
@@ -26,7 +26,7 @@ export default function Gallery() {
               <button
                 key={cs.id}
                 onClick={() => setActive(i)}
-                aria-label={`View ${cs.title}`}
+                aria-label={`Ver ${cs.title}`}
                 className={cn(
                   'h-10 w-10 rounded-full border text-xs transition-all duration-500',
                   active === i
@@ -48,7 +48,7 @@ export default function Gallery() {
             <p className="text-sm text-platinum-dim">{c.treatment}</p>
           </div>
           <p className="text-xs uppercase tracking-wide2 text-champagne">
-            Completed in {c.duration}
+            Completado en {c.duration}
           </p>
         </div>
       </div>
@@ -83,7 +83,7 @@ function CompareSlider({ data }: { data: CaseStudy }) {
     >
       {/* After (full) */}
       <div className={cn('absolute inset-0 bg-gradient-to-br', data.hueAfter)}>
-        <Label text="After" align="right" tone="dark" />
+        <Label text="Después" align="right" tone="dark" />
         <Smile tone="bright" />
       </div>
 
@@ -92,7 +92,7 @@ function CompareSlider({ data }: { data: CaseStudy }) {
         className={cn('absolute inset-0 bg-gradient-to-br', data.hueBefore)}
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
       >
-        <Label text="Before" align="left" tone="light" />
+        <Label text="Antes" align="left" tone="light" />
         <Smile tone="dim" />
       </div>
 

@@ -70,36 +70,36 @@ export default function Hero() {
       {/* Overlay content */}
       <div className="hero-content container-luxe relative z-20 flex h-full flex-col justify-center">
         <motion.p className="hero-fade eyebrow mb-6">
-          {CLINIC.location} · Established Excellence
+          {CLINIC.location} · Excelencia Consagrada
         </motion.p>
 
         <h1 className="font-serif text-ivory">
           <span className="block overflow-hidden">
             <span className="hero-line-inner block text-[15vw] font-light leading-[0.85] md:text-[12vw] lg:text-[11rem]">
-              The Art of
+              El Arte de
             </span>
           </span>
           <span className="block overflow-hidden">
             <span className="hero-line-inner block text-[15vw] font-light italic leading-[0.85] text-gold-gradient md:text-[12vw] lg:text-[11rem]">
-              the Smile
+              la Sonrisa
             </span>
           </span>
         </h1>
 
         <div className="hero-fade mt-10 flex max-w-xl flex-col gap-8 sm:flex-row sm:items-center">
           <p className="max-w-md text-balance text-sm font-light leading-relaxed text-platinum">
-            A private clinic where medical precision meets the craftsmanship of fine
-            jewellery — designing smiles for those who expect perfection.
+            Una clínica privada donde la precisión médica se une a la artesanía de la
+            alta joyería: diseñamos sonrisas para quienes esperan la perfección.
           </p>
           <a href="#booking" className="btn-luxe hero-fade shrink-0">
-            <span>Request Consultation</span>
+            <span>Solicitar Consulta</span>
           </a>
         </div>
       </div>
 
       {/* Scroll cue */}
       <div className="hero-cue absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3">
-        <span className="text-[10px] uppercase tracking-luxe text-platinum-dim">Scroll</span>
+        <span className="text-[10px] uppercase tracking-luxe text-platinum-dim">Desliza</span>
         <span className="relative h-12 w-px overflow-hidden bg-white/15">
           <motion.span
             className="absolute left-0 top-0 h-4 w-px bg-champagne"

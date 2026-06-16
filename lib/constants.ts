@@ -10,20 +10,20 @@ import {
 
 export const CLINIC = {
   name: 'AURUM',
-  tagline: 'The Art of the Perfect Smile',
-  location: 'Madison Avenue, New York',
-  phone: '+1 (212) 555-0188',
+  tagline: 'El Arte de la Sonrisa Perfecta',
+  location: 'Recoleta, Buenos Aires',
+  phone: '+54 11 5555 0188',
   email: 'concierge@aurum.clinic',
-  hours: 'By private appointment',
+  hours: 'Solo con cita privada',
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Philosophy', href: '#intro' },
-  { label: 'Services', href: '#services' },
-  { label: 'The Doctor', href: '#doctor' },
-  { label: 'Technology', href: '#technology' },
-  { label: 'Results', href: '#gallery' },
-  { label: 'Voices', href: '#testimonials' },
+  { label: 'Filosofía', href: '#intro' },
+  { label: 'Servicios', href: '#services' },
+  { label: 'El Doctor', href: '#doctor' },
+  { label: 'Tecnología', href: '#technology' },
+  { label: 'Resultados', href: '#gallery' },
+  { label: 'Testimonios', href: '#testimonials' },
 ] as const;
 
 export interface Service {
@@ -39,55 +39,55 @@ export const SERVICES: Service[] = [
   {
     id: 'smile-design',
     index: '01',
-    title: 'Smile Design',
-    subtitle: 'Digital Architecture',
+    title: 'Diseño de Sonrisa',
+    subtitle: 'Arquitectura Digital',
     description:
-      'A smile composed pixel by pixel. We engineer harmony between lips, gums, and proportion using digital facial mapping before a single procedure begins.',
+      'Una sonrisa compuesta píxel a píxel. Diseñamos la armonía entre labios, encías y proporción mediante mapeo facial digital antes de iniciar cualquier procedimiento.',
     Icon: PiSmileyDuotone,
   },
   {
     id: 'implants',
     index: '02',
-    title: 'Dental Implants',
-    subtitle: 'Titanium Permanence',
+    title: 'Implantes Dentales',
+    subtitle: 'Permanencia de Titanio',
     description:
-      'Guided, computer-navigated implantology that restores the architecture of the jaw with surgical precision and lifelong stability.',
+      'Implantología guiada por ordenador que restaura la arquitectura del maxilar con precisión quirúrgica y estabilidad de por vida.',
     Icon: PiToothDuotone,
   },
   {
     id: 'orthodontics',
     index: '03',
-    title: 'Orthodontics',
-    subtitle: 'Invisible Alignment',
+    title: 'Ortodoncia',
+    subtitle: 'Alineación Invisible',
     description:
-      'Discreet, clinically-engineered alignment systems crafted to move teeth with intention — never compromise, never visible.',
+      'Sistemas de alineación discretos y diseñados clínicamente para mover los dientes con intención: sin concesiones, sin que se noten.',
     Icon: PiScanDuotone,
   },
   {
     id: 'veneers',
     index: '04',
-    title: 'Porcelain Veneers',
-    subtitle: 'Hand-Layered Ceramic',
+    title: 'Carillas de Porcelana',
+    subtitle: 'Cerámica Artesanal',
     description:
-      'Ultra-thin ceramic, layered by master ceramists to refract light exactly as natural enamel does. Indistinguishable. Eternal.',
+      'Cerámica ultrafina, estratificada por maestros ceramistas para refractar la luz igual que el esmalte natural. Indistinguible. Eterna.',
     Icon: PiDiamondDuotone,
   },
   {
     id: 'digital',
     index: '05',
-    title: 'Digital Dentistry',
-    subtitle: 'Same-Day Precision',
+    title: 'Odontología Digital',
+    subtitle: 'Precisión en el Día',
     description:
-      'Intraoral scanning, AI diagnostics, and in-house milling deliver restorations of uncompromising accuracy in a single visit.',
+      'Escaneo intraoral, diagnóstico con IA y fresado propio entregan restauraciones de exactitud absoluta en una sola visita.',
     Icon: PiSparkleDuotone,
   },
   {
     id: 'aesthetic',
     index: '06',
-    title: 'Aesthetic Dentistry',
-    subtitle: 'The Final Refinement',
+    title: 'Odontología Estética',
+    subtitle: 'El Refinamiento Final',
     description:
-      'Whitening, contouring, and soft-tissue artistry — the finishing brushstrokes that elevate a healthy smile into a signature.',
+      'Blanqueamiento, contorneado y arte sobre el tejido blando: las pinceladas finales que elevan una sonrisa sana a una firma personal.',
     Icon: PiCrownSimpleDuotone,
   },
 ];
@@ -98,10 +98,10 @@ export interface Achievement {
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { value: '24', label: 'Years of practice' },
-  { value: '11K+', label: 'Smiles redesigned' },
-  { value: '38', label: 'International awards' },
-  { value: '100%', label: 'Discretion guaranteed' },
+  { value: '24', label: 'Años de trayectoria' },
+  { value: '11K+', label: 'Sonrisas rediseñadas' },
+  { value: '38', label: 'Premios internacionales' },
+  { value: '100%', label: 'Discreción garantizada' },
 ];
 
 export interface TimelineItem {
@@ -113,23 +113,23 @@ export interface TimelineItem {
 export const TIMELINE: TimelineItem[] = [
   {
     year: '2001',
-    title: 'Doctorate, Restorative Sciences',
-    detail: 'Graduated summa cum laude with a thesis on biomimetic enamel restoration.',
+    title: 'Doctorado en Ciencias Restauradoras',
+    detail: 'Graduado summa cum laude con una tesis sobre restauración biomimética del esmalte.',
   },
   {
     year: '2008',
-    title: 'Fellowship — Digital Smile Design',
-    detail: 'One of the first European practitioners certified in full-arch digital workflows.',
+    title: 'Fellowship — Diseño Digital de Sonrisa',
+    detail: 'Uno de los primeros profesionales en certificarse en flujos de trabajo digitales de arcada completa.',
   },
   {
     year: '2014',
-    title: 'AURUM Founded',
-    detail: 'Opened the flagship private clinic dedicated to ultra-premium aesthetic dentistry.',
+    title: 'Fundación de AURUM',
+    detail: 'Abre la clínica privada insignia dedicada a la odontología estética de ultra lujo.',
   },
   {
     year: '2023',
-    title: 'Global Recognition',
-    detail: 'Named among the world’s leading cosmetic dental authorities by the Aesthetic Council.',
+    title: 'Reconocimiento Global',
+    detail: 'Nombrado entre las principales autoridades mundiales en odontología cosmética por el Aesthetic Council.',
   },
 ];
 
@@ -145,34 +145,34 @@ export const TECHNOLOGIES: Technology[] = [
   {
     id: 'scanner',
     name: 'Primescan AC',
-    category: 'Intraoral Imaging',
+    category: 'Imagen Intraoral',
     description:
-      'Captures 1,000,000 data points per second to build a flawless digital twin of your mouth — without a single impression tray.',
+      'Captura 1.000.000 de puntos por segundo para crear un gemelo digital perfecto de tu boca, sin una sola cubeta de impresión.',
     hotspots: [
-      { x: 28, y: 32, label: 'Optical capture array' },
-      { x: 68, y: 58, label: 'Precision-balanced grip' },
+      { x: 28, y: 32, label: 'Matriz de captura óptica' },
+      { x: 68, y: 58, label: 'Empuñadura de precisión' },
     ],
   },
   {
     id: 'cbct',
-    name: 'CBCT Volumetric',
-    category: '3D Diagnostics',
+    name: 'CBCT Volumétrico',
+    category: 'Diagnóstico 3D',
     description:
-      'Low-dose cone-beam tomography reveals bone, nerve, and tissue in true volumetric 3D for surgical-grade planning.',
+      'Tomografía de haz cónico de baja dosis que revela hueso, nervio y tejido en 3D volumétrico real para una planificación de grado quirúrgico.',
     hotspots: [
-      { x: 50, y: 24, label: 'Rotating sensor ring' },
-      { x: 40, y: 70, label: 'Stabilised positioning' },
+      { x: 50, y: 24, label: 'Anillo sensor giratorio' },
+      { x: 40, y: 70, label: 'Posicionamiento estabilizado' },
     ],
   },
   {
     id: 'mill',
     name: 'CEREC MC XL',
-    category: 'In-House Milling',
+    category: 'Fresado Propio',
     description:
-      'Diamond-tipped milling sculpts a single block of medical ceramic into a final restoration in minutes, on-site.',
+      'El fresado con puntas de diamante esculpe un único bloque de cerámica médica hasta la restauración final en minutos, en el propio centro.',
     hotspots: [
-      { x: 35, y: 40, label: 'Twin diamond spindles' },
-      { x: 64, y: 62, label: 'Ceramic block chamber' },
+      { x: 35, y: 40, label: 'Husillos gemelos de diamante' },
+      { x: 64, y: 62, label: 'Cámara del bloque cerámico' },
     ],
   },
 ];
@@ -189,25 +189,25 @@ export interface CaseStudy {
 export const CASES: CaseStudy[] = [
   {
     id: 'case-1',
-    title: 'The Executive',
-    treatment: 'Full porcelain veneers · 10 units',
-    duration: '3 weeks',
+    title: 'El Ejecutivo',
+    treatment: 'Carillas de porcelana · 10 unidades',
+    duration: '3 semanas',
     hueBefore: 'from-[#3a3530] to-[#23211e]',
     hueAfter: 'from-[#e7d3a8] to-[#c9a86a]',
   },
   {
     id: 'case-2',
-    title: 'The Performer',
-    treatment: 'Smile design · whitening · contouring',
-    duration: '2 weeks',
+    title: 'La Artista',
+    treatment: 'Diseño de sonrisa · blanqueamiento · contorneado',
+    duration: '2 semanas',
     hueBefore: 'from-[#352f2a] to-[#1f1d1a]',
     hueAfter: 'from-[#f3ece0] to-[#d8c39a]',
   },
   {
     id: 'case-3',
-    title: 'The Founder',
-    treatment: 'Guided implants · full-arch rehabilitation',
-    duration: '6 months',
+    title: 'El Fundador',
+    treatment: 'Implantes guiados · rehabilitación de arcada completa',
+    duration: '6 meses',
     hueBefore: 'from-[#2f2b27] to-[#1b1916]',
     hueAfter: 'from-[#efe6d6] to-[#cdb486]',
   },
@@ -224,22 +224,22 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'I have been photographed for thirty years. For the first time, I am not editing my own smile. AURUM understood the difference between teeth and a presence.',
+      'Llevo treinta años siendo fotografiada. Por primera vez no retoco mi propia sonrisa. AURUM entendió la diferencia entre tener dientes y tener presencia.',
     author: 'A. Lindqvist',
-    role: 'Film Director',
+    role: 'Directora de Cine',
   },
   {
     id: 't2',
     quote:
-      'Discretion, precision, and an obsession with detail I usually only find in my own work. This is not dentistry. It is craftsmanship.',
+      'Discreción, precisión y una obsesión por el detalle que normalmente solo encuentro en mi propio trabajo. Esto no es odontología. Es artesanía.',
     author: 'M. Castellan',
-    role: 'Architect',
+    role: 'Arquitecto',
   },
   {
     id: 't3',
     quote:
-      'They rebuilt my confidence in a single afternoon. The technology felt like the future; the care felt like a private members’ club.',
+      'Reconstruyeron mi confianza en una sola tarde. La tecnología parecía del futuro; el trato, el de un club privado.',
     author: 'R. Okonkwo',
-    role: 'Founder & CEO',
+    role: 'Fundador y CEO',
   },
 ];

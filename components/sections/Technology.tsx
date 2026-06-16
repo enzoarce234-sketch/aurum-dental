@@ -17,16 +17,16 @@ export default function Technology() {
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-champagne/5 blur-[120px]" />
 
       <div className="container-luxe relative">
-        <SectionLabel index="04" label="Instruments of Precision" />
+        <SectionLabel index="04" label="Instrumentos de Precisión" />
         <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
           <AnimatedText
             as="h2"
-            text="Technology, presented as it deserves."
+            text="Tecnología, presentada como merece."
             className="max-w-2xl font-serif text-4xl font-light text-ivory md:text-6xl"
           />
           <p className="max-w-xs text-sm font-light text-platinum-dim">
-            Every diagnosis and restoration is powered by instruments engineered to the
-            tolerances of aerospace — and treated like the products they are.
+            Cada diagnóstico y restauración se apoya en instrumentos diseñados con
+            tolerancias aeroespaciales, y tratados como los productos que son.
           </p>
         </div>
 
