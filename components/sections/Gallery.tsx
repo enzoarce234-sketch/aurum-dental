@@ -12,7 +12,7 @@ export default function Gallery() {
   const c = CASES[active];
 
   return (
-    <section id="gallery" className="relative bg-obsidian py-32 md:py-44">
+    <section id="gallery" className="relative bg-obsidian py-20 md:py-32 lg:py-44">
       <div className="container-luxe">
         <SectionLabel index="05" label="Antes y Después" />
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">

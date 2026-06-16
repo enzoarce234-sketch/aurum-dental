@@ -36,7 +36,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-onyx py-32 md:py-44"
+      className="relative overflow-hidden bg-onyx py-20 md:py-32 lg:py-44"
     >
       <div className="pointer-events-none absolute -right-40 top-20 font-serif text-[40rem] leading-none text-ink/[0.015]">
         ”

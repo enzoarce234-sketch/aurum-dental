@@ -12,7 +12,7 @@ export default function Technology() {
   const tech = TECHNOLOGIES[active];
 
   return (
-    <section id="technology" className="relative overflow-hidden bg-onyx py-32 md:py-44">
+    <section id="technology" className="relative overflow-hidden bg-onyx py-20 md:py-32 lg:py-44">
       {/* ambient glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-champagne/5 blur-[120px]" />
 

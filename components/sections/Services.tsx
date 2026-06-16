@@ -12,7 +12,7 @@ export default function Services() {
   const ActiveIcon = SERVICES[active].Icon;
 
   return (
-    <section id="services" className="relative bg-onyx py-32 md:py-44">
+    <section id="services" className="relative bg-onyx py-20 md:py-32 lg:py-44">
       <div className="container-luxe">
         <SectionLabel index="02" label="Las Disciplinas" />
         <AnimatedText

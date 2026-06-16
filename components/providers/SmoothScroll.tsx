@@ -19,6 +19,8 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (reduced) return;
+    // On touch devices native scrolling is smoother (and lighter) than Lenis.
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const lenis = new Lenis({
       duration: 1.25,

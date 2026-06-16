@@ -64,7 +64,7 @@ export default function Booking() {
   };
 
   return (
-    <section id="booking" className="relative overflow-hidden bg-obsidian py-32 md:py-44">
+    <section id="booking" className="relative overflow-hidden bg-obsidian py-20 md:py-32 lg:py-44">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-champagne/[0.04] blur-[140px]" />
 
       <div className="container-luxe relative">

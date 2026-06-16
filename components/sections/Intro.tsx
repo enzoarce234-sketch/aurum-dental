@@ -38,7 +38,7 @@ export default function Intro() {
     <section
       ref={root}
       id="intro"
-      className="relative bg-obsidian py-32 md:py-44"
+      className="relative bg-obsidian py-20 md:py-32 lg:py-44"
     >
       <div className="container-luxe">
         <SectionLabel index="01" label="Filosofía" />

@@ -45,7 +45,7 @@ export default function Doctor() {
   }, []);
 
   return (
-    <section ref={root} id="doctor" className="relative bg-obsidian py-32 md:py-44">
+    <section ref={root} id="doctor" className="relative bg-obsidian py-20 md:py-32 lg:py-44">
       <div className="container-luxe">
         <SectionLabel index="03" label="La Mano Tras la Obra" />
 

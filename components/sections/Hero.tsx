@@ -1,20 +1,36 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { CLINIC } from '@/lib/constants';
 
 // The Canvas is client-only and code-split so it never blocks first paint.
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-obsidian" />,
+  loading: () => <div className="absolute inset-0 bg-onyx" />,
 });
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
+  // Only render the WebGL frameloop while the hero is on screen — this stops the
+  // GPU/CPU cost dead once the user scrolls into the rest of the page.
+  const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,7 +68,7 @@ export default function Hero() {
     >
       {/* WebGL stage */}
       <div className="absolute inset-0 z-0">
-        <HeroScene />
+        <HeroScene active={active} isMobile={isMobile} />
       </div>
 
       {/* Soft light beams (CSS, layered over canvas) */}

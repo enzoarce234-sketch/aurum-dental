@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import {
   Environment,
@@ -9,39 +9,44 @@ import {
   AdaptiveDpr,
   PerformanceMonitor,
 } from '@react-three/drei';
-import {
-  EffectComposer,
-  Bloom,
-  Vignette,
-  SMAA,
-} from '@react-three/postprocessing';
-import { useState } from 'react';
+import { EffectComposer, Bloom, Vignette, SMAA } from '@react-three/postprocessing';
 import Tooth from './Tooth';
 import Particles from './Particles';
+
+interface HeroSceneProps {
+  /** Render only while the hero is on screen (saves GPU/CPU on scroll). */
+  active?: boolean;
+  /** Scale the workload down on phones / coarse-pointer devices. */
+  isMobile?: boolean;
+}
 
 /**
  * The hero's WebGL stage. Reflections are baked from in-scene Lightformers,
  * so the experience is 100% self-contained — no external HDRI fetch required.
  */
-export default function HeroScene() {
-  const [dpr, setDpr] = useState(1.5);
-  // Post-processing is gated on device performance so weaker GPUs stay smooth.
-  const [effects, setEffects] = useState(true);
+export default function HeroScene({ active = true, isMobile = false }: HeroSceneProps) {
+  const [dpr, setDpr] = useState(isMobile ? 1 : 1.5);
+  // Post-processing is heavy: off on mobile, and dropped if a desktop GPU struggles.
+  const [effects, setEffects] = useState(!isMobile);
 
   return (
     <Canvas
-      shadows
-      dpr={dpr}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      // Pause the loop entirely when off-screen.
+      frameloop={active ? 'always' : 'never'}
+      shadows={!isMobile}
+      dpr={isMobile ? [1, 1.5] : dpr}
+      gl={{ antialias: !isMobile, alpha: true, powerPreference: 'high-performance' }}
       camera={{ position: [0, 0, 7], fov: 38 }}
     >
-      <PerformanceMonitor
-        onIncline={() => setDpr(2)}
-        onDecline={() => {
-          setDpr(1);
-          setEffects(false);
-        }}
-      />
+      {!isMobile && (
+        <PerformanceMonitor
+          onIncline={() => setDpr(2)}
+          onDecline={() => {
+            setDpr(1);
+            setEffects(false);
+          }}
+        />
+      )}
       <AdaptiveDpr pixelated />
 
       <color attach="background" args={['#eef3f6']} />
@@ -55,27 +60,29 @@ export default function HeroScene() {
         penumbra={1}
         intensity={2.6}
         color="#ffffff"
-        castShadow
+        castShadow={!isMobile}
         shadow-mapSize={[1024, 1024]}
       />
       <spotLight position={[-7, 2, -4]} angle={0.5} penumbra={1} intensity={1.4} color="#bfe6e0" />
       <pointLight position={[0, -4, 4]} intensity={0.5} color="#ffffff" />
 
       <Suspense fallback={null}>
-        <Tooth scale={1.25} />
-        <Particles count={650} />
+        <Tooth scale={isMobile ? 1.05 : 1.25} />
+        <Particles count={isMobile ? 220 : 650} />
 
-        <ContactShadows
-          position={[0, -2.6, 0]}
-          opacity={0.5}
-          scale={14}
-          blur={3}
-          far={6}
-          color="#000000"
-        />
+        {!isMobile && (
+          <ContactShadows
+            position={[0, -2.6, 0]}
+            opacity={0.5}
+            scale={14}
+            blur={3}
+            far={6}
+            color="#000000"
+          />
+        )}
 
         {/* Studio reflection rig — drives the clearcoat highlights on the enamel */}
-        <Environment resolution={256} frames={1}>
+        <Environment resolution={isMobile ? 128 : 256} frames={1}>
           <Lightformer
             form="rect"
             intensity={3}
@@ -108,8 +115,8 @@ export default function HeroScene() {
           />
         </Environment>
 
-        {/* Cinematic grade: soft golden bloom + gentle vignette */}
-        {effects && (
+        {/* Cinematic grade: soft bloom + gentle vignette (desktop only) */}
+        {effects && !isMobile && (
           <EffectComposer multisampling={0}>
             <Bloom
               intensity={0.18}
