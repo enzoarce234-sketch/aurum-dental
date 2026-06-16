@@ -155,16 +155,10 @@ for your own endpoint (e.g. Formspree, Resend, a serverless function).
 
 ## ✦ Credits & Licensing
 
-The 3D tooth model is a real scanned asset, re-finished in-engine with a custom material:
-
-- **"Tooth"** by **sugamo** — sourced via [Poly Pizza](https://poly.pizza/m/66NBoNdhb03),
-  licensed under **Creative Commons Attribution 3.0 (CC-BY 3.0)**.
-- File: `public/models/tooth.glb`
-
-> ⚠️ **Attribution is required.** Under CC-BY 3.0 you must keep a visible credit to the
-> author. This project displays it in the footer; keep it (or an equivalent credit) in any
-> deployment. See [ATTRIBUTION.md](./ATTRIBUTION.md).
+- **3D tooth** — generated procedurally in `components/three/Tooth.tsx` (no external
+  model/asset, no third-party license to track).
+- **Fonts** — Cormorant Garamond & Inter (Google Fonts, OFL), self-hosted via `next/font`.
 
 ---
 
-© AURUM. Crafted as a flagship digital experience.
+© AURUM. Odontología con calidez en Buenos Aires.

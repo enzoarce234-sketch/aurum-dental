@@ -14,10 +14,10 @@ export default function Services() {
   return (
     <section id="services" className="relative bg-onyx py-20 md:py-32 lg:py-44">
       <div className="container-luxe">
-        <SectionLabel index="02" label="Las Disciplinas" />
+        <SectionLabel index="02" label="Tratamientos" />
         <AnimatedText
           as="h2"
-          text="Un espectro de maestría"
+          text="Tratamientos para cada sonrisa"
           className="mb-16 font-serif text-4xl font-light text-ivory md:text-6xl lg:text-7xl"
         />
 

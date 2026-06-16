@@ -2,99 +2,97 @@
 
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Float, useGLTF } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { lerp } from '@/lib/utils';
 
-const MODEL_URL = '/models/tooth.glb';
-
 /**
- * Real scanned tooth (GLB), re-finished in a premium pearlescent enamel material.
- * The model is auto-centred and auto-scaled at runtime so it always frames
- * perfectly regardless of the source asset's native units or pivot.
+ * A single, clean, aesthetic tooth — generated procedurally so it is always
+ * exactly one tooth (no extra props), with full control over its shape.
+ * A unit sphere is sculpted: a wide rounded crown on top that tapers into a
+ * single elongated root below, then finished in a glossy white enamel material.
  */
 export default function Tooth({ scale = 1 }: { scale?: number }) {
   const group = useRef<THREE.Group>(null);
   const target = useRef({ x: 0, y: 0 });
-  const { scene } = useGLTF(MODEL_URL);
 
-  // Luxury enamel — clearcoat + faint gold iridescence over the scanned geometry.
   const material = useMemo(
     () =>
       new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color('#fbfcfd'),
-        roughness: 0.18,
-        metalness: 0.0,
+        color: new THREE.Color('#fcfdfd'),
+        roughness: 0.16,
+        metalness: 0,
         clearcoat: 1,
-        clearcoatRoughness: 0.06,
-        transmission: 0.04,
+        clearcoatRoughness: 0.05,
+        transmission: 0.03,
         ior: 1.5,
-        thickness: 1.2,
-        sheen: 0.6,
-        sheenColor: new THREE.Color('#dff0ee'),
+        thickness: 1.0,
+        sheen: 0.5,
+        sheenColor: new THREE.Color('#dff1ef'),
         sheenRoughness: 0.5,
-        iridescence: 0.12,
-        iridescenceIOR: 1.3,
+        iridescence: 0.08,
         envMapIntensity: 1.4,
       }),
     []
   );
 
-  // Clone, re-material, centre on origin, and normalise to a consistent size.
-  const model = useMemo(() => {
-    const root = scene.clone(true);
+  const geometry = useMemo(() => {
+    const geo = new THREE.SphereGeometry(1, 160, 160);
+    const pos = geo.attributes.position as THREE.BufferAttribute;
+    const v = new THREE.Vector3();
 
-    root.traverse((child) => {
-      if ((child as THREE.Mesh).isMesh) {
-        const mesh = child as THREE.Mesh;
-        mesh.material = material;
-        mesh.castShadow = true;
-        mesh.receiveShadow = false;
-        mesh.geometry.computeVertexNormals();
+    const crownWidth = 1.04; // left-right
+    const crownDepth = 0.74; // front-back (an incisor is flatter)
+
+    for (let i = 0; i < pos.count; i++) {
+      v.fromBufferAttribute(pos, i);
+      const y = v.y;
+      let taper = 1;
+      let ny = y;
+
+      if (y < 0) {
+        // Lower half tapers and elongates into a single root.
+        taper = THREE.MathUtils.clamp(1 + y * 0.7, 0.16, 1);
+        ny = y * 1.85;
+      } else {
+        // Crown: gently flatten the biting edge and round the shoulders.
+        ny = y * 0.92;
+        taper = 1 - y * y * 0.05;
       }
-    });
 
-    // Auto-fit: centre the bounding box and scale so its largest side ≈ 3 units.
-    const box = new THREE.Box3().setFromObject(root);
-    const size = new THREE.Vector3();
-    const center = new THREE.Vector3();
-    box.getSize(size);
-    box.getCenter(center);
-    const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    const fit = 3 / maxDim;
+      // Soft incisal lobes — three subtle vertical swells on the crown front.
+      const lobe =
+        y > 0.1 ? Math.cos(v.x * 4.2) * 0.015 * Math.max(0, v.z) : 0;
 
-    const wrapper = new THREE.Group();
-    root.position.sub(center); // centre on origin
-    wrapper.add(root);
-    wrapper.scale.setScalar(fit);
-    return wrapper;
-  }, [scene, material]);
+      v.x *= taper * crownWidth + lobe;
+      v.z *= taper * crownDepth + lobe;
+      v.y = ny;
+      pos.setXYZ(i, v.x, v.y, v.z);
+    }
+
+    geo.computeVertexNormals();
+    geo.center();
+    return geo;
+  }, []);
 
   useFrame((state, delta) => {
     if (!group.current) return;
-    // Mouse-reactive parallax tilt (state.pointer is normalised -1..1).
     target.current.y = state.pointer.x * 0.5;
-    target.current.x = -state.pointer.y * 0.35;
+    target.current.x = -state.pointer.y * 0.32;
     group.current.rotation.y = lerp(
       group.current.rotation.y,
-      target.current.y + state.clock.elapsedTime * 0.12,
+      target.current.y + state.clock.elapsedTime * 0.1,
       delta * 2
     );
-    group.current.rotation.x = lerp(
-      group.current.rotation.x,
-      target.current.x,
-      delta * 2
-    );
+    group.current.rotation.x = lerp(group.current.rotation.x, target.current.x, delta * 2);
   });
 
   return (
-    <Float speed={1.4} rotationIntensity={0.3} floatIntensity={0.7} floatingRange={[-0.1, 0.1]}>
-      <group ref={group} scale={scale} dispose={null}>
-        <primitive object={model} />
+    <Float speed={1.3} rotationIntensity={0.25} floatIntensity={0.6} floatingRange={[-0.1, 0.1]}>
+      {/* Slight forward tilt so both crown and root read at a glance. */}
+      <group ref={group} scale={scale * 1.7} rotation={[0.15, 0, 0]} dispose={null}>
+        <mesh geometry={geometry} material={material} castShadow />
       </group>
     </Float>
   );
 }
-
-// Preload so the model is ready the moment the hero mounts.
-useGLTF.preload(MODEL_URL);

@@ -104,8 +104,8 @@ export default function Hero() {
 
         <div className="hero-fade mt-10 flex max-w-xl flex-col gap-8 sm:flex-row sm:items-center">
           <p className="max-w-md text-balance text-sm font-light leading-relaxed text-platinum">
-            Una clínica donde la tecnología de última generación se combina con un trato
-            humano y cercano, para que cuidar tu sonrisa sea simple y sin estrés.
+            Una clínica en Buenos Aires donde te recibimos con un trato humano y cercano,
+            para que cuidar tu sonrisa sea simple, cómodo y sin estrés.
           </p>
           <a href="#booking" className="btn-luxe hero-fade shrink-0">
             <span>Solicitar Consulta</span>

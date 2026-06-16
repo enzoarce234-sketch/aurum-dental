@@ -7,6 +7,14 @@ import {
   PiScanDuotone,
   PiCrownSimpleDuotone,
 } from 'react-icons/pi';
+import {
+  FiHeart,
+  FiSmile,
+  FiAward,
+  FiCreditCard,
+  FiClock,
+  FiShield,
+} from 'react-icons/fi';
 
 export const CLINIC = {
   name: 'AURUM',
@@ -18,12 +26,12 @@ export const CLINIC = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Filosofía', href: '#intro' },
-  { label: 'Servicios', href: '#services' },
+  { label: 'Nosotros', href: '#intro' },
+  { label: 'Tratamientos', href: '#services' },
   { label: 'El Doctor', href: '#doctor' },
-  { label: 'Tecnología', href: '#technology' },
+  { label: 'Por qué elegirnos', href: '#why' },
   { label: 'Resultados', href: '#gallery' },
-  { label: 'Testimonios', href: '#testimonials' },
+  { label: 'Opiniones', href: '#testimonials' },
 ] as const;
 
 export interface Service {
@@ -40,54 +48,54 @@ export const SERVICES: Service[] = [
     id: 'smile-design',
     index: '01',
     title: 'Diseño de Sonrisa',
-    subtitle: 'Arquitectura Digital',
+    subtitle: 'Estética y armonía',
     description:
-      'Una sonrisa compuesta píxel a píxel. Diseñamos la armonía entre labios, encías y proporción mediante mapeo facial digital antes de iniciar cualquier procedimiento.',
+      'Estudiamos tu rostro y tus dientes para lograr una sonrisa natural y proporcionada, pensada especialmente para vos.',
     Icon: PiSmileyDuotone,
   },
   {
     id: 'implants',
     index: '02',
     title: 'Implantes Dentales',
-    subtitle: 'Permanencia de Titanio',
+    subtitle: 'Solución duradera',
     description:
-      'Implantología guiada por ordenador que restaura la arquitectura del maxilar con precisión quirúrgica y estabilidad de por vida.',
+      'Reemplazamos las piezas que faltan con implantes que devuelven la función y la estética, con un seguimiento cercano en cada etapa.',
     Icon: PiToothDuotone,
   },
   {
     id: 'orthodontics',
     index: '03',
     title: 'Ortodoncia',
-    subtitle: 'Alineación Invisible',
+    subtitle: 'Brackets y alineadores',
     description:
-      'Sistemas de alineación discretos y diseñados clínicamente para mover los dientes con intención: sin concesiones, sin que se noten.',
+      'Alineamos tus dientes con brackets o alineadores transparentes, según lo que mejor se adapte a tu día a día.',
     Icon: PiScanDuotone,
   },
   {
     id: 'veneers',
     index: '04',
-    title: 'Carillas de Porcelana',
-    subtitle: 'Cerámica Artesanal',
+    title: 'Carillas y Estética',
+    subtitle: 'Detalles que transforman',
     description:
-      'Cerámica ultrafina, estratificada por maestros ceramistas para refractar la luz igual que el esmalte natural. Indistinguible. Eterna.',
+      'Carillas, blanqueamiento y contorneado para mejorar el color, la forma y el brillo de tu sonrisa, siempre con un resultado natural.',
     Icon: PiDiamondDuotone,
   },
   {
-    id: 'digital',
+    id: 'prevention',
     index: '05',
-    title: 'Odontología Digital',
-    subtitle: 'Precisión en el Día',
+    title: 'Limpieza y Prevención',
+    subtitle: 'La salud primero',
     description:
-      'Escaneo intraoral, diagnóstico con IA y fresado propio entregan restauraciones de exactitud absoluta en una sola visita.',
+      'Limpiezas profesionales y controles periódicos para mantener tus dientes y encías sanos durante muchos años.',
     Icon: PiSparkleDuotone,
   },
   {
-    id: 'aesthetic',
+    id: 'general',
     index: '06',
-    title: 'Odontología Estética',
-    subtitle: 'El Refinamiento Final',
+    title: 'Odontología General',
+    subtitle: 'Todo en un solo lugar',
     description:
-      'Blanqueamiento, contorneado y arte sobre el tejido blando: las pinceladas finales que elevan una sonrisa sana a una firma personal.',
+      'Arreglos, tratamientos de conducto y urgencias: la atención de siempre, con calidez y sin vueltas.',
     Icon: PiCrownSimpleDuotone,
   },
 ];
@@ -113,13 +121,13 @@ export interface TimelineItem {
 export const TIMELINE: TimelineItem[] = [
   {
     year: '2001',
-    title: 'Doctorado en Ciencias Restauradoras',
-    detail: 'Graduado summa cum laude con una tesis sobre restauración biomimética del esmalte.',
+    title: 'Odontólogo — Universidad de Buenos Aires',
+    detail: 'Se recibe con honores y comienza su formación en odontología estética y restauradora.',
   },
   {
     year: '2008',
-    title: 'Fellowship — Diseño Digital de Sonrisa',
-    detail: 'Uno de los primeros profesionales en certificarse en flujos de trabajo digitales de arcada completa.',
+    title: 'Especialización en Estética Dental',
+    detail: 'Se perfecciona en diseño de sonrisa, carillas y rehabilitación estética.',
   },
   {
     year: '2014',
@@ -133,47 +141,49 @@ export const TIMELINE: TimelineItem[] = [
   },
 ];
 
-export interface Technology {
+export interface Reason {
   id: string;
-  name: string;
-  category: string;
+  title: string;
   description: string;
-  hotspots: { x: number; y: number; label: string }[];
+  Icon: IconType;
 }
 
-export const TECHNOLOGIES: Technology[] = [
+export const REASONS: Reason[] = [
   {
-    id: 'scanner',
-    name: 'Primescan AC',
-    category: 'Imagen Intraoral',
-    description:
-      'Captura 1.000.000 de puntos por segundo para crear un gemelo digital perfecto de tu boca, sin una sola cubeta de impresión.',
-    hotspots: [
-      { x: 28, y: 32, label: 'Matriz de captura óptica' },
-      { x: 68, y: 58, label: 'Empuñadura de precisión' },
-    ],
+    id: 'human',
+    title: 'Trato humano y cercano',
+    description: 'Te escuchamos y te explicamos cada paso, sin apuro y en un lenguaje claro.',
+    Icon: FiHeart,
   },
   {
-    id: 'cbct',
-    name: 'CBCT Volumétrico',
-    category: 'Diagnóstico 3D',
-    description:
-      'Tomografía de haz cónico de baja dosis que revela hueso, nervio y tejido en 3D volumétrico real para una planificación de grado quirúrgico.',
-    hotspots: [
-      { x: 50, y: 24, label: 'Anillo sensor giratorio' },
-      { x: 40, y: 70, label: 'Posicionamiento estabilizado' },
-    ],
+    id: 'painless',
+    title: 'Atención sin dolor',
+    description: 'Tu comodidad es la prioridad: trabajamos para que cada visita sea tranquila.',
+    Icon: FiSmile,
   },
   {
-    id: 'mill',
-    name: 'CEREC MC XL',
-    category: 'Fresado Propio',
-    description:
-      'El fresado con puntas de diamante esculpe un único bloque de cerámica médica hasta la restauración final en minutos, en el propio centro.',
-    hotspots: [
-      { x: 35, y: 40, label: 'Husillos gemelos de diamante' },
-      { x: 64, y: 62, label: 'Cámara del bloque cerámico' },
-    ],
+    id: 'team',
+    title: 'Profesionales matriculados',
+    description: 'Un equipo con años de experiencia y formación continua que cuida tu salud.',
+    Icon: FiAward,
+  },
+  {
+    id: 'coverage',
+    title: 'Obras sociales y cuotas',
+    description: 'Coordinamos tu cobertura y ofrecemos planes de pago accesibles.',
+    Icon: FiCreditCard,
+  },
+  {
+    id: 'urgency',
+    title: 'Urgencias el mismo día',
+    description: 'Si tenés dolor, te damos prioridad para atenderte lo antes posible.',
+    Icon: FiClock,
+  },
+  {
+    id: 'hygiene',
+    title: 'Higiene y seguridad',
+    description: 'Esterilización rigurosa y consultorios cuidados en cada turno.',
+    Icon: FiShield,
   },
 ];
 
@@ -189,27 +199,27 @@ export interface CaseStudy {
 export const CASES: CaseStudy[] = [
   {
     id: 'case-1',
-    title: 'El Ejecutivo',
-    treatment: 'Carillas de porcelana · 10 unidades',
+    title: 'Carillas y blanqueamiento',
+    treatment: 'Estética dental · arcada superior',
     duration: '3 semanas',
-    hueBefore: 'from-[#3a3530] to-[#23211e]',
-    hueAfter: 'from-[#e7d3a8] to-[#c9a86a]',
+    hueBefore: 'from-[#d2ccc0] to-[#a59e92]',
+    hueAfter: 'from-[#eaf8f4] to-[#c8ebe4]',
   },
   {
     id: 'case-2',
-    title: 'La Artista',
-    treatment: 'Diseño de sonrisa · blanqueamiento · contorneado',
-    duration: '2 semanas',
-    hueBefore: 'from-[#352f2a] to-[#1f1d1a]',
-    hueAfter: 'from-[#f3ece0] to-[#d8c39a]',
+    title: 'Ortodoncia',
+    treatment: 'Alineación con brackets',
+    duration: '14 meses',
+    hueBefore: 'from-[#cfc9bd] to-[#a39c90]',
+    hueAfter: 'from-[#eef8f5] to-[#cdece6]',
   },
   {
     id: 'case-3',
-    title: 'El Fundador',
-    treatment: 'Implantes guiados · rehabilitación de arcada completa',
-    duration: '6 meses',
-    hueBefore: 'from-[#2f2b27] to-[#1b1916]',
-    hueAfter: 'from-[#efe6d6] to-[#cdb486]',
+    title: 'Implante y corona',
+    treatment: 'Reemplazo de pieza · sector frontal',
+    duration: '4 meses',
+    hueBefore: 'from-[#d4cdc1] to-[#a8a094]',
+    hueAfter: 'from-[#e9f7f3] to-[#c6eae2]',
   },
 ];
 

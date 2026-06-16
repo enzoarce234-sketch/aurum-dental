@@ -41,22 +41,21 @@ export default function Intro() {
       className="relative bg-obsidian py-20 md:py-32 lg:py-44"
     >
       <div className="container-luxe">
-        <SectionLabel index="01" label="Filosofía" />
+        <SectionLabel index="01" label="Nosotros" />
 
         <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr] lg:gap-24">
           <div>
             <AnimatedText
               as="h2"
-              text="No blanqueamos dientes. Componemos presencia."
+              text="Cuidamos tu sonrisa como cuidaríamos la nuestra."
               className="font-serif text-4xl font-light leading-[1.05] text-ivory md:text-6xl lg:text-7xl"
             />
             <Reveal delay={0.2} className="mt-10 max-w-xl">
               <p className="text-lg font-light leading-relaxed text-platinum">
-                Cada sonrisa que creamos comienza como un estudio: de arquitectura, de luz,
-                de la persona que la lleva. Tratamos la odontología como un oficio de
-                orfebrería, uniendo la precisión quirúrgica con una mirada obsesiva por la
-                estética. El resultado nunca se percibe como trabajo dental. Simplemente se
-                ve como <em className="text-champagne not-italic">tú</em>, en tu mejor versión.
+                Cada tratamiento empieza por escucharte. Combinamos experiencia, dedicación
+                y un trato cálido para que te sientas cómodo en cada visita y los resultados
+                se vean naturales. Queremos que tu sonrisa sea, simplemente, la mejor
+                versión de <em className="text-champagne not-italic">la tuya</em>.
               </p>
             </Reveal>
           </div>

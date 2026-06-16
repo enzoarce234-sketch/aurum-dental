@@ -83,8 +83,8 @@ function CompareSlider({ data }: { data: CaseStudy }) {
     >
       {/* After (full) */}
       <div className={cn('absolute inset-0 bg-gradient-to-br', data.hueAfter)}>
-        <Label text="Después" align="right" tone="dark" />
-        <Smile tone="bright" />
+        <Label text="Después" align="right" />
+        <Mouth clean />
       </div>
 
       {/* Before (clipped) */}
@@ -92,8 +92,8 @@ function CompareSlider({ data }: { data: CaseStudy }) {
         className={cn('absolute inset-0 bg-gradient-to-br', data.hueBefore)}
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
       >
-        <Label text="Antes" align="left" tone="light" />
-        <Smile tone="dim" />
+        <Label text="Antes" align="left" />
+        <Mouth clean={false} />
       </div>
 
       {/* Handle */}
@@ -109,22 +109,12 @@ function CompareSlider({ data }: { data: CaseStudy }) {
   );
 }
 
-function Label({
-  text,
-  align,
-  tone,
-}: {
-  text: string;
-  align: 'left' | 'right';
-  tone: 'light' | 'dark';
-}) {
+function Label({ text, align }: { text: string; align: 'left' | 'right' }) {
   return (
     <span
       className={cn(
-        'absolute top-6 z-[5] text-[11px] uppercase tracking-luxe',
-        align === 'left' ? 'left-6' : 'right-6',
-        // Rendered over the case imagery: dark side needs light text and vice versa.
-        tone === 'dark' ? 'text-black/55' : 'text-white/85'
+        'absolute top-6 z-[5] rounded-full bg-obsidian/70 px-3 py-1 text-[11px] uppercase tracking-luxe text-ink backdrop-blur',
+        align === 'left' ? 'left-6' : 'right-6'
       )}
     >
       {text}
@@ -132,23 +122,115 @@ function Label({
   );
 }
 
-/** A minimal abstract "smile" arc so the comparison reads without photo assets. */
-function Smile({ tone }: { tone: 'bright' | 'dim' }) {
+// Deterministic crookedness/shade data for the "before" mouth (no hydration drift).
+const BEFORE_ROT = [-5, 4, -3, 6, -2, 5, -4, 3, -6, 2];
+const BEFORE_DY = [3, -2, 4, 1, 5, 0, 4, 2, 3, -1];
+const BEFORE_FILL = [
+  '#d8c690', '#cdb87f', '#d3bf86', '#c6b079', '#a8954f',
+  '#cdb884', '#8f7f55', '#c9b57f', '#bda871', '#d2bd88',
+];
+
+/**
+ * A stylised but recognisable mouth. `clean` → straight, white, healthy.
+ * Otherwise → yellowed, stained, crooked teeth with a couple of bad ones.
+ */
+function Mouth({ clean }: { clean: boolean }) {
+  const UP = 10;
+  const LO = 8;
+  const left = 44;
+  const right = 276;
+  const step = (right - left) / UP;
+
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <svg width="46%" viewBox="0 0 200 90" fill="none" className="opacity-90">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <rect
-            key={i}
-            x={10 + i * 18}
-            y={tone === 'bright' ? 18 : 26}
-            width={tone === 'bright' ? 15 : 13}
-            height={tone === 'bright' ? 52 : 44}
-            rx={5}
-            fill={tone === 'bright' ? '#fffdf7' : '#9c958a'}
-            opacity={tone === 'bright' ? 0.95 : 0.7}
-          />
-        ))}
+      <svg width="72%" viewBox="0 0 320 200" className="drop-shadow-sm">
+        {/* upper lip */}
+        <path
+          d="M28,72 Q160,28 292,72"
+          fill="none"
+          stroke={clean ? '#e98b86' : '#c47e77'}
+          strokeWidth="6"
+          strokeLinecap="round"
+          opacity="0.45"
+        />
+        {/* dark mouth interior */}
+        <path d="M42,80 Q160,54 278,80 Q258,152 160,160 Q62,152 42,80 Z" fill="#2b1f1f" />
+        {/* upper gum */}
+        <path
+          d="M44,82 Q160,52 276,82 L276,64 Q160,38 44,64 Z"
+          fill={clean ? '#f0a8a8' : '#cf938b'}
+        />
+
+        {/* upper teeth */}
+        {Array.from({ length: UP }).map((_, i) => {
+          const fc = Math.abs(i - (UP - 1) / 2);
+          const w = 26 - fc * 1.3;
+          const h = 52 - fc * 4;
+          const cx = left + (i + 0.5) * step;
+          const top = 78 + fc * fc * 0.7;
+          const rot = clean ? 0 : BEFORE_ROT[i];
+          const dy = clean ? 0 : BEFORE_DY[i];
+          const fill = clean ? '#fcfffe' : BEFORE_FILL[i];
+          return (
+            <g key={`u${i}`} transform={`rotate(${rot} ${cx} ${top + h / 2})`}>
+              <rect x={cx - w / 2} y={top + dy} width={w} height={h} rx={w * 0.4} fill={fill} />
+              {clean ? (
+                <rect
+                  x={cx - w / 2 + 3}
+                  y={top + 5}
+                  width={w * 0.22}
+                  height={h * 0.45}
+                  rx={3}
+                  fill="#ffffff"
+                  opacity="0.55"
+                />
+              ) : (
+                // plaque / stain near the gum line
+                <rect
+                  x={cx - w / 2}
+                  y={top + dy}
+                  width={w}
+                  height={h * 0.34}
+                  rx={w * 0.4}
+                  fill="#7c6a3a"
+                  opacity="0.22"
+                />
+              )}
+            </g>
+          );
+        })}
+
+        {/* lower teeth */}
+        {Array.from({ length: LO }).map((_, i) => {
+          const fc = Math.abs(i - (LO - 1) / 2);
+          const w = 19 - fc * 1;
+          const h = 24 - fc * 1.4;
+          const cx = 72 + (i + 0.5) * ((248 - 72) / LO);
+          const bottom = 150 - fc * fc * 0.5 - h;
+          const fill = clean ? '#f4faf9' : '#c7b67f';
+          return (
+            <rect
+              key={`l${i}`}
+              x={cx - w / 2}
+              y={bottom}
+              width={w}
+              height={h}
+              rx={w * 0.4}
+              fill={fill}
+              opacity="0.92"
+            />
+          );
+        })}
+
+        {/* lower lip */}
+        <path
+          d="M52,150 Q160,184 268,150"
+          fill="none"
+          stroke={clean ? '#e98b86' : '#c47e77'}
+          strokeWidth="7"
+          strokeLinecap="round"
+          opacity="0.5"
+        />
       </svg>
     </div>
   );

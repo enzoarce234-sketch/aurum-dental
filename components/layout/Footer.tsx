@@ -88,26 +88,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-ink/10 py-8 text-xs text-platinum-dim sm:flex-row">
           <span>© {new Date().getFullYear()} {CLINIC.name}. Todos los derechos reservados.</span>
-          <span className="text-center">
-            Cuidamos tu sonrisa · Modelo 3D «Tooth» de{' '}
-            <a
-              href="https://poly.pizza/m/66NBoNdhb03"
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-ink/20 underline-offset-2 transition-colors hover:text-champagne"
-            >
-              sugamo
-            </a>{' '}
-            ·{' '}
-            <a
-              href="https://creativecommons.org/licenses/by/3.0/"
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-ink/20 underline-offset-2 transition-colors hover:text-champagne"
-            >
-              CC-BY 3.0
-            </a>
-          </span>
+          <span className="text-center">Odontología con calidez en Buenos Aires.</span>
         </div>
       </div>
     </footer>
