@@ -1,6 +1,6 @@
 'use client';
 
-import { ElementType, useRef } from 'react';
+import { createElement, ElementType, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
@@ -24,7 +24,7 @@ interface AnimatedTextProps {
  */
 export default function AnimatedText({
   text,
-  as: Tag = 'span',
+  as = 'span',
   className,
   delay = 0,
 }: AnimatedTextProps) {
@@ -54,9 +54,10 @@ export default function AnimatedText({
     return () => ctx.revert();
   }, [text, delay]);
 
-  return (
-    <Tag ref={ref} className={cn('block', className)}>
-      {words.map((word, i) => (
+  return createElement(
+    as,
+    { ref, className: cn('block', className) },
+    words.map((word, i) => (
         <span
           key={`${word}-${i}`}
           className="inline-block overflow-hidden align-bottom"
@@ -67,7 +68,6 @@ export default function AnimatedText({
             {i < words.length - 1 ? ' ' : ''}
           </span>
         </span>
-      ))}
-    </Tag>
+      ))
   );
 }
